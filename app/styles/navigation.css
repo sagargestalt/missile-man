@@ -1,0 +1,4 @@
+.navbar-default .navbar-nav > li.active {
+  border-bottom: 2px #F00 solid;
+  color: #F00;
+}

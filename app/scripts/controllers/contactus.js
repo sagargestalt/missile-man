@@ -8,7 +8,7 @@
  * Controller of the missileManApp
  */
 angular.module('missileManApp')
-  .controller('ContactusctrlCtrl', function () {
+  .controller('ContactUsCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

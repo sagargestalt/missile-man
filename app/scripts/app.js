@@ -14,28 +14,27 @@ angular
     'ngCookies',
     'ngMessages',
     'ngResource',
-    'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.router'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise("/home");
+
+    $stateProvider
+      .state('main', {
+        url: '/home',
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        controller: 'MainCtrl'
       })
-      .when('/about-us', {
+      .state('about-us', {
+        url: '/about-us',
         templateUrl: 'views/about-us.html',
-        controller: 'AboutUsCtrl',
-        controllerAs: 'about'
+        controller: 'AboutUsCtrl'
       })
-      .when('/contact-us', {
+      .state('contact-us', {
+        url: '/contact-us',
         templateUrl: 'views/contact-us.html',
-        controller: 'ContactUsCtrl',
-        controllerAs: 'contactus'
-      })
-      .otherwise({
-        redirectTo: '/'
+        controller: 'ContactUsCtrl'
       });
   });
