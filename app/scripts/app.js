@@ -36,5 +36,15 @@ angular
         url: '/contact-us',
         templateUrl: 'views/contact-us.html',
         controller: 'ContactUsCtrl'
+      })
+      .state('login', {
+        url: '/login',
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
+      .state('sign-up', {
+        url: '/sign-up',
+        templateUrl: 'views/sign-up.html',
+        controller: 'SignUpCtrl'
       });
   });

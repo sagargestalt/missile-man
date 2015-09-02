@@ -7,8 +7,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.html" class="navbar-brand logo logo-title">
-        <img src="images/logo.png" style="width:65%">
+      <a ui-sref="main" class="navbar-brand logo logo-title">
+        <img ng-src="images/logo.png" style="width:65%">
       </a>
     </div>
     <div class="navbar-collapse collapse">
@@ -46,7 +46,7 @@
           <a href ui-sref="contact-us">Contact Us</a>
         </li>
         <li class="postadd">
-          <a class="btn btn-block   btn-border btn-post btn-danger" href="post-ads.html">Sign In</a>
+          <a class="btn btn-block btn-border btn-post btn-danger" href ui-sref="login">Sign In</a>
         </li>
       </ul>
     </div>
