@@ -47,4 +47,10 @@ angular
         templateUrl: 'views/sign-up.html',
         controller: 'SignUpCtrl'
       });
-  });
+  })
+  .config(['$resourceProvider', function($resourceProvider) {
+    // Don't strip trailing slashes from calculated URLs
+    // $resourceProvider.defaults.stripTrailingSlashes = false;
+    $resourceProvider.defaults.useXDomain = true;
+    console.log($resourceProvider);
+  }]);

@@ -1,8 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-require APPPATH . '/controllers/REST_Controller.php';
+require APPPATH . '/controllers/CosRestController.php';
 
-class Branches extends REST_Controller
+class Branches extends CosRestController
 {
   public function index_get()
   {

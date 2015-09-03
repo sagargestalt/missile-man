@@ -8,8 +8,9 @@
           </h2>
           <div class="row">
             <div class="col-sm-12">
-              <form class="form-horizontal">
+              <form name="registerForm" class="form-horizontal" novalidate ng-submit="submit()">
                 <fieldset>
+
                   <div class="form-group required">
                     <label class="col-md-4 control-label">You are a
                       <sup>*</sup>
@@ -17,93 +18,181 @@
                     <div class="col-md-6">
                       <div class="radio">
                         <label>
-                          <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Professional
+                          <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="user.userType" value="S">Student
                         </label>
                       </div>
                       <div class="radio">
                         <label>
-                          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Individual
+                          <input type="radio" name="optionsRadios" id="optionsRadios2" ng-model="user.userType" value="G">Parents
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios" id="optionsRadios3" ng-model="user.userType" value="P">Professional (College, Institute etc)
                         </label>
                       </div>
                     </div>
                   </div>
-                  <div class="form-group required">
+
+                  <div class="form-group required" ng-show="user.userType == 'S'" ng-class="{'has-error': registerForm.firstName.$touched && registerForm.firstName.$error.required}">
                     <label class="col-md-4 control-label">First Name
                       <sup>*</sup>
                     </label>
                     <div class="col-md-6">
-                      <input name="" placeholder="First Name" class="form-control input-md" required="" type="text">
+                      <input name="firstName" placeholder="First Name" class="form-control input-md" required type="text" ng-model="user.firstName">
                     </div>
                   </div>
-                  <div class="form-group required">
+
+                  <div class="form-group required" ng-show="user.userType == 'S'" ng-class="{'has-error': registerForm.lastName.$touched && registerForm.lastName.$error.required}">
                     <label class="col-md-4 control-label">Last Name
                       <sup>*</sup>
                     </label>
                     <div class="col-md-6">
-                      <input name="textinput" placeholder="Last Name" class="form-control input-md" type="text">
+                      <input name="lastName" placeholder="Last Name" class="form-control input-md" required type="text" ng-model="user.lastName">
                     </div>
                   </div>
-                  <div class="form-group required">
+
+                  <div class="form-group required" ng-show="user.userType == 'P'" ng-class="{'has-error': registerForm.instituteName.$touched && registerForm.instituteName.$error.required}">
+                    <label class="col-md-4 control-label">Institute Name
+                      <sup>*</sup>
+                    </label>
+                    <div class="col-md-6">
+                      <input name="instituteName" placeholder="Institute Name" class="form-control input-md" required="" type="text" ng-model="user.firstName">
+                    </div>
+                  </div>
+
+                  <div class="form-group required" ng-show="user.userType == 'P'" ng-class="{'has-error': registerForm.contactName.$touched && registerForm.contactName.$error.required}">
+                    <label class="col-md-4 control-label">Contact Person Name
+                      <sup>*</sup>
+                    </label>
+                    <div class="col-md-6">
+                      <input name="contactName" placeholder="Contact Person Name" class="form-control input-md" type="text" ng-model="user.lastName" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group required" ng-class="{'has-error': registerForm.phoneNumber.$touched && registerForm.phoneNumber.$error.required}">
                     <label class="col-md-4 control-label">Phone Number
                       <sup>*</sup>
                     </label>
                     <div class="col-md-6">
-                      <input name="textinput" placeholder="Phone Number" class="form-control input-md" type="text">
+                      <input name="phoneNumber" placeholder="Phone Number" class="form-control input-md" type="text" ng-model="user.phone" required>
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox" value="">
-                          <small> Hide the phone number on the published ads.</small>
+                          <span class="help-block">OTP will be sent on this number.</span>
                         </label>
                       </div>
                     </div>
                   </div>
-                  <div class="form-group">
+
+                  <div class="form-group" ng-show="user.userType == 'S'">
                     <label class="col-md-4 control-label">Gender</label>
                     <div class="col-md-6">
                       <div class="radio">
                         <label for="Gender-0">
-                          <input name="Gender" id="Gender-0" value="1" checked="checked" type="radio">Male
+                          <input name="Gender" id="Gender-0" ng-model="user.gender" value="M" type="radio">Male
                         </label>
                       </div>
                       <div class="radio">
                         <label for="Gender-1">
-                          <input name="Gender" id="Gender-1" value="2" type="radio">Female
+                          <input name="Gender" id="Gender-1" type="radio" ng-model="user.gender" value="F">Female
                         </label>
                       </div>
                     </div>
                   </div>
+
+                  <div class="form-group required" ng-class="{'has-error': registerForm.userDistrict.$touched && registerForm.userDistrict.$error.required}">
+                    <label class="col-md-4 control-label" for="textarea">District <sup>*</sup>
+                    </label>
+                    <div class="col-md-6">
+                      <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        <select name="userDistrict" class="form-control" ng-model="user.district" required>
+                          <option value="">Select District...</option>
+                          <option value="Ahmednagar">Ahmednagar</option>
+                          <option value="Akola">Akola</option>
+                          <option value="Amravati">Amravati</option>
+                          <option value="Akola">Aurangabad</option>
+                          <option value="Beed">Beed</option>
+                          <option value="Bhandara">Bhandara</option>
+                          <option value="Buldhana">Buldhana</option>
+                          <option value="Chandrapur">Chandrapur</option>
+                          <option value="Dhule">Dhule</option>
+                          <option value="Gadchiroli">Gadchiroli</option>
+                          <option value="Gondiya">Gondiya</option>
+                          <option value="Hingoli">Hingoli</option>
+                          <option value="Jalgaon">Jalgaon</option>
+                          <option value="Jalna">Jalna</option>
+                          <option value="Kolhapur">Kolhapur</option>
+                          <option value="Latur">Latur</option>
+                          <option value="Mumbai-City">Mumbai-City</option>
+                          <option value="Mumbai-Suburban">Mumbai-Suburban</option>
+                          <option value="Nagpur">Nagpur</option>
+                          <option value="Nanded">Nanded</option>
+                          <option value="Nandurbar">Nandurbar</option>
+                          <option value="Nashik">Nashik</option>
+                          <option value="Osmanabad">Osmanabad</option>
+                          <option value="Palghar">Palghar</option>
+                          <option value="Parbhani">Parbhani</option>
+                          <option value="Pune">Pune</option>
+                          <option value="Raigad">Raigad</option>
+                          <option value="Ratnagiri">Ratnagiri</option>
+                          <option value="Sangli">Sangli</option>
+                          <option value="Satara">Satara</option>
+                          <option value="Silvassa">Silvassa</option>
+                          <option value="Sindhudurg">Sindhudurg</option>
+                          <option value="Solapur">Solapur</option>
+                          <option value="Thane">Thane</option>
+                          <option value="Wardha">Wardha</option>
+                          <option value="Washim">Washim</option>
+                          <option value="Yavatmal">Yavatmal</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="textarea">About Yourself</label>
                     <div class="col-md-6">
-                      <textarea class="form-control" id="textarea" name="textarea">About Yourself</textarea>
+                      <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        <textarea class="form-control" id="textarea" name="textarea" ng-model="user.aboutMe">About Yourself</textarea>
+                      </div>
                     </div>
                   </div>
-                  <div class="form-group required">
+
+                  <div class="form-group required" ng-class="{'has-error': registerForm.email.$touched && registerForm.email.$error.required}">
                     <label for="inputEmail3" class="col-md-4 control-label">Email
                       <sup>*</sup>
                     </label>
                     <div class="col-md-6">
-                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                      <input type="email" class="form-control" name="email" placeholder="Email" ng-model="user.email" required>
                     </div>
                   </div>
-                  <div class="form-group required">
-                    <label for="inputPassword3" class="col-md-4 control-label">Password</label>
+
+                  <div class="form-group required" ng-class="{'has-error': registerForm.password.$touched && registerForm.password.$error.required}">
+                    <label for="inputPassword3" class="col-md-4 control-label">Password
+                      <sup>*</sup>
+                    </label>
                     <div class="col-md-6">
-                      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                      <p class="help-block">At least 5 characters</p>
+                      <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        <input type="password" class="form-control" name="password" placeholder="Password" ng-model="user.password">
+                      </div>
+                      <span class="help-block">At least 5 characters</span>
                     </div>
                   </div>
+
                   <div class="form-group">
                     <label class="col-md-4 control-label"></label>
                     <div class="col-md-8">
                       <div class="termbox mb10">
                         <label class="checkbox-inline" for="checkboxes-1">
-                          <input name="checkboxes" id="checkboxes-1" value="1" type="checkbox">I have read and agree to the
+                          <input name="checkboxes" type="checkbox" ng-model="acceptTerms">I have read and agree to the
                           <a href="#">Terms & Conditions</a>
                         </label>
                       </div>
                       <div style="clear:both"></div>
-                      <a class="btn btn-primary" href="#">Register</a>
+                      <input type="submit" value="Register" class="btn btn-primary" href  ng-disabled="!acceptTerms && registerForm.$valid"/>
                     </div>
                   </div>
                 </fieldset>

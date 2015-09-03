@@ -1,8 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-require APPPATH . '/controllers/REST_Controller.php';
+require APPPATH . '/controllers/CosRestController.php';
 
-class Users extends REST_Controller
+class Users extends CosRestController
 {
   public function index_get()
   {
@@ -20,30 +20,20 @@ class Users extends REST_Controller
   public function index_post()
   {
     try {
-      $user = array(
-        'csFirstName' => $this->input->post('firstName'),
-        'csLastName' => $this->input->post('lastName'),
-        'csPhone' => $this->input->post('phone'),
-        'csGender' => $this->input->post('gender'),
-        'csDistrict' => $this->input->post('district'),
-        'csAboutMe' => $this->input->post('aboutMe'),
-        'csEmail' => $this->input->post('email'),
-        'csPassword' => $this->input->post('password'),
-        'ipAddress' => $this->input->ip_address(),
-        'createdDateTime' => date("Y-m-d H:i:s")
-      );
+      // $fName = $this->input->post("firstName");
+      // $fName = $_POST["firstName"];
 
       $user = array(
-        'csFirstName' => 'Demo',
-        'csLastName' => 'Demo',
-        'csPhone' => '9552533434',
-        'csGender' => 'M',
-        'csDistrict' => 'Latur',
-        'csAboutMe' => 'Test',
-        'csEmail' => 'demo@gmail.com',
+        'csFirstName' => $this->post('firstName'),
+        'csLastName' => $this->post('lastName'),
+        'csPhone' => $this->post('phone'),
+        'csGender' => $this->post('gender'),
+        'csDistrict' => $this->post('district'),
+        'csAboutMe' => $this->post('aboutMe'),
+        'csEmail' => $this->post('email'),
         'isBlock' => 1,
         'csOtp'=> rand(pow(10, 3), pow(10, 4)-1),
-        'csPassword' => md5('demo'),
+        'csPassword' => $this->post('password'),
         'ipAddress' => $this->input->ip_address(),
         'createdDateTime' => date("Y-m-d H:i:s")
       );
@@ -107,6 +97,17 @@ class Users extends REST_Controller
         "message" => "You entered incorrect OTP. Please try agin.",
         "otp" => $otp
       )));
+    }
+  }
+
+  public function demo_post() {
+    if( count($this->input->post()) > 0 )
+    {
+        echo "Wroking";
+    }
+    else
+    {
+      echo $this->post('firstName');
     }
   }
 }
