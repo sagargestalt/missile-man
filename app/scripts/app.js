@@ -16,7 +16,8 @@ angular
     'ngResource',
     'ngSanitize',
     'ngTouch',
-    'ui.router'
+    'ui.router',
+    'ui.bootstrap'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/home");
@@ -46,6 +47,11 @@ angular
         url: '/sign-up',
         templateUrl: 'views/sign-up.html',
         controller: 'SignUpCtrl'
+      })
+      .state('authorise', {
+        url: '/authorise',
+        templateUrl: 'views/authorise.html',
+        controller: 'AuthoriseCtrl'
       });
   })
   .config(['$resourceProvider', function($resourceProvider) {

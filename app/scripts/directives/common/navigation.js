@@ -11,6 +11,7 @@ angular.module('missileManApp')
     return {
       templateUrl: 'views/navigation.html',
       restrict: 'E',
+      replace: true,
       link: function postLink() {
         // element.text('this is the navigationDirective directive');
       }

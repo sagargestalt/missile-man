@@ -33,7 +33,7 @@ class Users extends CosRestController
         'csEmail' => $this->post('email'),
         'isBlock' => 1,
         'csOtp'=> rand(pow(10, 3), pow(10, 4)-1),
-        'csPassword' => $this->post('password'),
+        'csPassword' => md5($this->post('password')),
         'ipAddress' => $this->input->ip_address(),
         'createdDateTime' => date("Y-m-d H:i:s")
       );
@@ -47,7 +47,7 @@ class Users extends CosRestController
       $query = $this->db->get('cosUsers');
 
       $count = $query->num_rows();
-      if( 1 ) {
+      if( $count === 0 ) {
         $this->db->insert('cosUsers', $user);
         $this->response(array("data" => array(
           "status" => 201,

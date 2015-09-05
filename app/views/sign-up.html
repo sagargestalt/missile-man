@@ -23,18 +23,18 @@
                       </div>
                       <div class="radio">
                         <label>
-                          <input type="radio" name="optionsRadios" id="optionsRadios2" ng-model="user.userType" value="G">Parents
+                          <input type="radio" name="optionsRadios" id="optionsRadios2" ng-model="user.userType" value="P">Parents
                         </label>
                       </div>
                       <div class="radio">
                         <label>
-                          <input type="radio" name="optionsRadios" id="optionsRadios3" ng-model="user.userType" value="P">Professional (College, Institute etc)
+                          <input type="radio" name="optionsRadios" id="optionsRadios3" ng-model="user.userType" value="I">Professional (College, Institute etc)
                         </label>
                       </div>
                     </div>
                   </div>
 
-                  <div class="form-group required" ng-show="user.userType == 'S'" ng-class="{'has-error': registerForm.firstName.$touched && registerForm.firstName.$error.required}">
+                  <div class="form-group required" ng-show="user.userType == 'S' || user.userType == 'P'" ng-class="{'has-error': registerForm.firstName.$touched && registerForm.firstName.$error.required}">
                     <label class="col-md-4 control-label">First Name
                       <sup>*</sup>
                     </label>
@@ -43,7 +43,7 @@
                     </div>
                   </div>
 
-                  <div class="form-group required" ng-show="user.userType == 'S'" ng-class="{'has-error': registerForm.lastName.$touched && registerForm.lastName.$error.required}">
+                  <div class="form-group required" ng-show="user.userType == 'S' || user.userType == 'P'" ng-class="{'has-error': registerForm.lastName.$touched && registerForm.lastName.$error.required}">
                     <label class="col-md-4 control-label">Last Name
                       <sup>*</sup>
                     </label>
@@ -52,7 +52,7 @@
                     </div>
                   </div>
 
-                  <div class="form-group required" ng-show="user.userType == 'P'" ng-class="{'has-error': registerForm.instituteName.$touched && registerForm.instituteName.$error.required}">
+                  <div class="form-group required" ng-show="user.userType == 'I'" ng-class="{'has-error': registerForm.instituteName.$touched && registerForm.instituteName.$error.required}">
                     <label class="col-md-4 control-label">Institute Name
                       <sup>*</sup>
                     </label>
@@ -61,7 +61,7 @@
                     </div>
                   </div>
 
-                  <div class="form-group required" ng-show="user.userType == 'P'" ng-class="{'has-error': registerForm.contactName.$touched && registerForm.contactName.$error.required}">
+                  <div class="form-group required" ng-show="user.userType == 'I'" ng-class="{'has-error': registerForm.contactName.$touched && registerForm.contactName.$error.required}">
                     <label class="col-md-4 control-label">Contact Person Name
                       <sup>*</sup>
                     </label>
@@ -84,7 +84,7 @@
                     </div>
                   </div>
 
-                  <div class="form-group" ng-show="user.userType == 'S'">
+                  <div class="form-group" ng-show="user.userType == 'S' || user.userType == 'P'">
                     <label class="col-md-4 control-label">Gender</label>
                     <div class="col-md-6">
                       <div class="radio">
@@ -105,7 +105,7 @@
                     </label>
                     <div class="col-md-6">
                       <div class="input-group">
-                        <span class="input-group-addon">@</span>
+
                         <select name="userDistrict" class="form-control" ng-model="user.district" required>
                           <option value="">Select District...</option>
                           <option value="Ahmednagar">Ahmednagar</option>
@@ -154,7 +154,7 @@
                     <label class="col-md-4 control-label" for="textarea">About Yourself</label>
                     <div class="col-md-6">
                       <div class="input-group">
-                        <span class="input-group-addon">@</span>
+
                         <textarea class="form-control" id="textarea" name="textarea" ng-model="user.aboutMe">About Yourself</textarea>
                       </div>
                     </div>
@@ -165,7 +165,7 @@
                       <sup>*</sup>
                     </label>
                     <div class="col-md-6">
-                      <input type="email" class="form-control" name="email" placeholder="Email" ng-model="user.email" required>
+                      <input type="email" class="form-control" name="email" placeholder="Email" ng-model="user.email" required ui-validate={blacklist : 'notBlackListed($value)' }>
                     </div>
                   </div>
 
@@ -175,8 +175,11 @@
                     </label>
                     <div class="col-md-6">
                       <div class="input-group">
-                        <span class="input-group-addon">@</span>
-                        <input type="password" class="form-control" name="password" placeholder="Password" ng-model="user.password">
+                        <input type="password" class="form-control" name="password" placeholder="Password" ng-model="user.password" required>
+                        <span class="input-group-addon">
+                          <i class="fa fa-lock"></i>
+                        </span>
+
                       </div>
                       <span class="help-block">At least 5 characters</span>
                     </div>
@@ -192,7 +195,8 @@
                         </label>
                       </div>
                       <div style="clear:both"></div>
-                      <input type="submit" value="Register" class="btn btn-primary" href  ng-disabled="!acceptTerms && registerForm.$valid"/>
+                      <input type="submit" value="Register" class="btn btn-primary" href ng-disabled="registerForm.$invalid"/>
+                      {{registerForm.$valid}}
                     </div>
                   </div>
                 </fieldset>
