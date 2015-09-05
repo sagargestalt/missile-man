@@ -11,7 +11,5 @@ angular.module('missileManApp')
   .factory('userFactory', ["$resource", function ( $resource ) {
 
     var url = 'http://localhost/missile-man/services/index.php/users';
-
     return $resource( url, {} );
-
   }]);

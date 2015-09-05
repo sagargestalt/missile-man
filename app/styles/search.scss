@@ -1,0 +1,158 @@
+/* =============================================================== */
+/* INTRO AND INTRO INNER
+/* =============================================================== */
+.search-page {
+  .intro {
+    width: 100%;
+    background: url(../../images/edu.jpg);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+    transition: all 400ms cubic-bezier(0.25,0.1,0.25,1) 0s;
+    -webkit-transition: all 400ms cubic-bezier(0.25,0.1,0.25,1) 0s;
+  }
+
+  .intro .container {
+    max-width: 800px;
+  }
+
+  .intro h1,.intro-title {
+    color: #fff;
+    font-family: Roboto;
+    font-size: 44px;
+    font-weight: bold;
+    letter-spacing: -0.3px;
+    margin-bottom: 10px;
+    padding-bottom: 0;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+    text-transform: uppercase;
+    transition: font 400ms cubic-bezier(0.25,0.1,0.25,1) 0s;
+  }
+
+  .intro p {
+    color: #e8eced;
+    font-size: 18px;
+    font-weight: 300;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+  }
+
+  .intro h2 {
+    color: #e8eced;
+    font-size: 30px;
+    margin-top:20px;
+    font-weight: 300;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+  }
+
+  /* =============================================================== */
+  /* PAGINATION
+  /* =============================================================== */
+
+  .pagination-bar {
+    margin-top: 35px;
+    display: block;
+  }
+
+  .pagination-bar .pagination {
+    margin-top: 0;
+  }
+
+  .pagination-bar .pagination li a {
+    color: #9a9a9a;
+    border-color: #cfcfcf;
+  }
+
+  .pagination-bar .pagination li a:hover {
+    color: #000000;
+  }
+
+  .pagination-bar .pagination li:last-child a {
+    color: #414141;
+  }
+
+  .pagination-bar .pagination li.active a {
+    background-color: #f8f8f8;
+    color: #000000;
+    border-color: #cfcfcf;
+    cursor: default;
+    font-weight: bold;
+  }
+
+
+  .coverfooter{background: url(../../images/bg.jpg); background-size:cover}
+
+
+
+  /* post-promo
+    
+    .post-promo {
+    margin-top: 15px;
+  }
+
+  .post-promo h2 {
+  padding-bottom: 10px;
+  }
+
+  */
+
+
+
+  /* Ribbons
+  .cornerRibbons {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  left: -8%;
+  overflow: hidden;
+  position: absolute;
+  top: 20%;
+  -ms-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  width: 200px;
+  z-index: 2;
+  transition: all 0.3s ease 0s;
+  }
+
+  .cornerRibbons a {
+  color: #fff;
+  display: block;
+  font-family: Roboto Condensed, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease 0s;
+  }
+
+  .cornerRibbons.topAds {
+  background: #16A085;
+  }
+
+  .cornerRibbons.urgentAds {
+  background: #CC3300;
+  }
+
+  .cornerRibbons.featuredAds {
+  background: #FB8D17;
+  }
+
+  .cornerRibbons.featuredAds a {
+  color: #fff;
+  }
+
+  .item-list.make-grid .cornerRibbons {
+  left: -30%;
+  top: 7%;
+  }
+
+  .item-list.make-compact .cornerRibbons {
+  left: -15%;
+  text-indent: -99999px;
+  top: 18%;
+  }
+  */
+}

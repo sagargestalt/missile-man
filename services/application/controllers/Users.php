@@ -80,12 +80,21 @@ class Users extends CosRestController
 
     $this->db->where('csPhone',$phone );
     $this->db->where('csOtp', $otp );
+    $this->db->where('isBlock', 1 );
 
     $query = $this->db->get('cosUsers');
 
     $count = $query->num_rows();
 
     if($count === 1 ) {
+      $data = array(
+        'isBlock' => 0
+      );
+
+      $this->db->where('csPhone',$phone );
+      $this->db->where('csOtp', $otp );
+      $this->db->update('cosUsers', $data);
+
       $this->response(array("data" => array(
         "status" => 201,
         "message" => "User is authorised.",
