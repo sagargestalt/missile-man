@@ -66,7 +66,7 @@ angular.module('missileManApp')
     };
 
     userSaveSuccess = function( data ) {
-      // console.log( data );
+      console.log( 'in usersavesuccess' );
       if( data.data.status === 301 ) {
         userSaveError( data );
         return;
@@ -91,6 +91,8 @@ angular.module('missileManApp')
     };
 
     userSaveError = function( data ) {
+      console.log( data );
+      console.log('in user save error');
       var config = {
         title: 'Error..!!',
         message: data.data.message,
@@ -110,7 +112,9 @@ angular.module('missileManApp')
 
     $scope.submit = function () {
       // return;
+      console.log('Submit button called');
       if(validate()) {
+        console.log('in validate if');
         userFactory.userData = $scope.user;
         userFactory.save( $scope.user ).$promise.then( userSaveSuccess, userSaveError );
       }

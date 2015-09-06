@@ -10,6 +10,12 @@
 angular.module('missileManApp')
   .factory('userFactory', ["$resource", function ( $resource ) {
 
-    var url = 'http://localhost/missile-man/services/index.php/users';
-    return $resource( url, {} );
+    var url = 'http://localhost/missile-man/services/index.php/users/:action';
+    return $resource( url, {
+      action: '@action'
+    }, {
+      execute: {
+        method: 'POST'
+      }
+    } );
   }]);

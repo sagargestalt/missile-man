@@ -58,5 +58,7 @@ angular
     // Don't strip trailing slashes from calculated URLs
     // $resourceProvider.defaults.stripTrailingSlashes = false;
     $resourceProvider.defaults.useXDomain = true;
-    console.log($resourceProvider);
+    $resourceProvider.defaults.withCredentials = true;
+    // console.log($resourceProvider);
+    console.log( 'This is sample test' );
   }]);

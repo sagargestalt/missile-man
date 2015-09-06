@@ -70,10 +70,10 @@ class Users extends CosRestController
     }
   }
 
-  public function authorize_post()
+  public function authorise_post()
   {
-    $phone = $this->input->post('id');
-    $otp = $this->input->post('otp');
+    $phone = $this->post('phone');
+    $otp = $this->post('otp');
 
     $this->load->database();
     $this->load->helper('array');
@@ -98,13 +98,15 @@ class Users extends CosRestController
       $this->response(array("data" => array(
         "status" => 201,
         "message" => "User is authorised.",
-        "otp" => $otp
+        "otp" => $otp,
+        "query" => $this->db->last_query()
       )));
     } else {
       $this->response(array("data" => array(
         "status" => 301,
         "message" => "You entered incorrect OTP. Please try agin.",
-        "otp" => $otp
+        "otp" => $otp,
+        "query" => $this->db->last_query()
       )));
     }
   }
