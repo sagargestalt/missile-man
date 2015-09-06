@@ -6,9 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="images/ico/favicon.png">
   <title>CutOff Search Polytechnic, Engineering for Maharashtra</title>
-  <style>
-    /*.selecter-selected{padding:13.3px 15px; border-radius:0px !important; border:0px; color:#999;}*/
-  </style>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -16,12 +13,7 @@
   <!-- bower:css -->
   <!-- endbower -->
   <!-- endbuild -->
-  <!--
-  <link rel="stylesheet" href="styles/style.css">
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/navigation.css">
-  <link rel="stylesheet" href="styles/home.css">
-  -->
+
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/home.css">
@@ -39,42 +31,12 @@
 
 <body ng-app="missileManApp">
   <div id="wrapper">
-    <header class="header">
+    <header class="header demo">
       <cs-navigation-dir></cs-navigation-dir>
     </header>
     <div ui-view></div>
     <cs-footer-dir></cs-footer-dir>
   </div>
-
-  <!-- main js -->
-  <!--<script src="assets/js/jquery.min.js"> </script>-->
-  <!--<script src="assets/bootstrap/js/bootstrap.min.js"></script>-->
-  <!-- <script src="assets/js/owl.carousel.min.js"></script> -->
-  <!-- Seclect Style js -->
-  <!-- <script src="assets/js/jquery.matchHeight-min.js"></script>
-<script src="assets/js/hideMaxListItem.js"></script> -->
-  <!-- Slider js -->
-  <!-- <script src="assets/plugins/jquery.fs.scroller/jquery.fs.scroller.js"></script> -->
-  <!-- <script src="assets/plugins/jquery.fs.selecter/jquery.fs.selecter.js"></script> -->
-  <!-- <script src="assets/js/script.js"></script> -->
-  <!-- Searching js  -->
-  <!-- <script type="text/javascript" src="assets/plugins/autocomplete/jquery.mockjax.js"></script>
-<script type="text/javascript" src="assets/plugins/autocomplete/jquery.autocomplete.js"></script>
-<script type="text/javascript" src="assets/plugins/autocomplete/usastates.js"></script>
-<script type="text/javascript" src="assets/plugins/autocomplete/autocomplete-demo.js"></script> -->
-
-  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-  <script>
-    ! function(A, n, g, u, l, a, r) {
-      A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
-        (A[l].q = A[l].q || []).push(arguments)
-      }, A[l].l = +new Date, a = n.createElement(g),
-      r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
-    }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-XXXXX-X');
-    ga('send', 'pageview');
-  </script>
 
   <!-- build:js(.) scripts/vendor.js -->
   <!-- bower:js -->
@@ -95,7 +57,6 @@
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
   <script src="scripts/app.js"></script>
   <script src="scripts/controllers/main.js"></script>
-  <script src="scripts/controllers/about.js"></script>
   <script src="scripts/directives/common/navigation.js"></script>
   <script src="scripts/directives/common/facebook.js"></script>
   <script src="scripts/directives/common/footer.js"></script>
@@ -108,6 +69,19 @@
   <script src="scripts/controllers/authorise.js"></script>
   <script src="scripts/services/notification.js"></script>
   <!-- endbuild -->
+
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+  <script>
+  ! function(A, n, g, u, l, a, r) {
+    A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
+      (A[l].q = A[l].q || []).push(arguments)
+    }, A[l].l = +new Date, a = n.createElement(g),
+    r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+  }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-XXXXX-X');
+  ga('send', 'pageview');
+  </script>
 
 </body>
 </html>
