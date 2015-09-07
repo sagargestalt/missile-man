@@ -8,10 +8,8 @@
  * Controller of the missileManApp
  */
 angular.module('missileManApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('MainCtrl',["$scope", "$state", function ($scope, $state) {
+    $scope.find = function () {
+      $state.go('college-search');
+    };
+  }]);

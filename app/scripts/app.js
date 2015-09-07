@@ -52,6 +52,16 @@ angular
         url: '/authorise',
         templateUrl: 'views/authorise.html',
         controller: 'AuthoriseCtrl'
+      })
+      .state('college-search', {
+        url: '/college-search',
+        templateUrl: 'views/college-search.html',
+        controller: 'CollegeSearchCtrl'
+      })
+      .state('college-detail', {
+        url: '/college-detail',
+        templateUrl: 'views/college-detail.html',
+        controller: 'CollegeDetailCtrl'
       });
   })
   .config(['$resourceProvider', function($resourceProvider) {
