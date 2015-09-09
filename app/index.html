@@ -15,6 +15,7 @@
   <!-- endbuild -->
 
   <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/loader.css">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/home.css">
   <link rel="stylesheet" href="styles/common.css">
@@ -30,7 +31,14 @@
 </head>
 
 <body ng-app="missileManApp">
-  <div id="wrapper">
+  <div class='uil-magnify-css ng-cloak' style='-webkit-transform:scale(0.76)'>
+    <div class="group">
+      <div class="grip"></div>
+      <div class="inner-circle"></div>
+      <div class="outer-circle"></div>
+    </div>
+  </div>
+  <div id="wrapper" class="ng-cloak">
     <header class="header demo">
       <cs-navigation-dir></cs-navigation-dir>
     </header>
