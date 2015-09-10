@@ -9,7 +9,7 @@
  */
 angular.module('missileManApp')
   .service('csNotication', ['$modal', function ($modal) {
-    // AngularJS will instantiate a singleton by calling "new" on this function
+    // AngularJS will instantiate a singleton by calling 'new' on this function
     var handleAction;
 
     handleAction = function( config ) {
@@ -26,7 +26,8 @@ angular.module('missileManApp')
             }
           }
         });
-        modalInstance.result.then( function( data ) {
+        // modalInstance.result.then( function( data ) {
+        modalInstance.result.then( function() {
           config.successCallback();
         }, function() {
           config.errorCallback();
@@ -35,5 +36,5 @@ angular.module('missileManApp')
 
     return {
       handle: handleAction
-    }
+    };
   }]);

@@ -246,6 +246,7 @@
     transform: translate(30px, 30px);
   }
 }
+
 .uil-magnify-css {
   background: none;
   position: relative;
@@ -253,8 +254,8 @@
   height: 200px;
   margin: auto;
   position: absolute;
-  top: 40%;
-  left: 40%;
+  top: 35%;
+  left: 35%;
   display: none;
 
   &.ng-cloak {

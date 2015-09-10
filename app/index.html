@@ -11,6 +11,8 @@
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
   <!-- build:css(.) styles/vendor.css -->
   <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/selectize/dist/css/selectize.css" />
+  <link rel="stylesheet" href="bower_components/ui-select/dist/select.css" />
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -31,7 +33,7 @@
 </head>
 
 <body ng-app="missileManApp">
-  <div class='uil-magnify-css ng-cloak' style='-webkit-transform:scale(0.76)'>
+  <div class='uil-magnify-css ng-cloak' style='-webkit-transform:scale(0.61)'>
     <div class="group">
       <div class="grip"></div>
       <div class="inner-circle"></div>
@@ -59,6 +61,10 @@
   <script src="bower_components/angular-touch/angular-touch.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+  <script src="bower_components/sifter/sifter.js"></script>
+  <script src="bower_components/microplugin/src/microplugin.js"></script>
+  <script src="bower_components/selectize/dist/js/selectize.js"></script>
+  <script src="bower_components/ui-select/dist/select.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -78,6 +84,8 @@
   <script src="scripts/services/notification.js"></script>
   <script src="scripts/controllers/college-search.js"></script>
   <script src="scripts/controllers/college-detail.js"></script>
+  <script src="scripts/services/data-container.js"></script>
+  <script src="scripts/services/college-search.js"></script>
   <!-- endbuild -->
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->

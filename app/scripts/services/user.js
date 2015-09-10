@@ -8,7 +8,7 @@
  * Factory in the missileManApp.
  */
 angular.module('missileManApp')
-  .factory('userFactory', ["$resource", function ( $resource ) {
+  .factory('userFactory', ['$resource', function ( $resource ) {
 
     var url = 'http://localhost/missile-man/services/index.php/users/:action';
     return $resource( url, {

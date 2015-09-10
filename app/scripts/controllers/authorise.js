@@ -8,7 +8,7 @@
  * Controller of the missileManApp
  */
 angular.module('missileManApp')
-  .controller('AuthoriseCtrl', ["userFactory", "$scope", "csNotication", "$state", function ( userFactory, $scope, csNotication, $state ) {
+  .controller('AuthoriseCtrl', ['userFactory', '$scope', 'csNotication', '$state', function ( userFactory, $scope, csNotication, $state ) {
     var init,
         verifySuccess,
         verifyError;
@@ -32,8 +32,8 @@ angular.module('missileManApp')
       var config = {
         title: 'Congratulations..!!',
         message: 'You are verified now. Enter phone number and password on login and start exploring.',
-        okText: "Ok",
-        cancelText: "Cancel",
+        okText: 'Ok',
+        cancelText: 'Cancel',
         showOK: true,
         showCancel: false,
         successCallback: function() {
@@ -51,8 +51,8 @@ angular.module('missileManApp')
       var config = {
         title: 'Error..!!',
         message: data.data.message,
-        okText: "Contact Us",
-        cancelText: "Cancel",
+        okText: 'Contact Us',
+        cancelText: 'Cancel',
         showOK: true,
         showCancel: true,
         successCallback: function() {

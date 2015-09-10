@@ -17,10 +17,11 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ui.select'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise("/home");
+    $urlRouterProvider.otherwise('/home');
 
     $stateProvider
       .state('main', {
@@ -56,7 +57,10 @@ angular
       .state('college-search', {
         url: '/college-search',
         templateUrl: 'views/college-search.html',
-        controller: 'CollegeSearchCtrl'
+        controller: 'CollegeSearchCtrl',
+        resolve: function() {
+
+        }
       })
       .state('college-detail', {
         url: '/college-detail',
@@ -71,4 +75,7 @@ angular
     $resourceProvider.defaults.withCredentials = true;
     // console.log($resourceProvider);
     console.log( 'This is sample test' );
-  }]);
+  }])
+  .config(function(uiSelectConfig) {
+    uiSelectConfig.theme = 'bootstrap';
+  });

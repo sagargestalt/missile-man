@@ -8,11 +8,10 @@
  * Controller of the missileManApp
  */
 angular.module('missileManApp')
-  .controller('SignUpCtrl',["userFactory", "$scope", "$modal", "$state","csNotication",
+  .controller('SignUpCtrl',['userFactory', '$scope', '$modal', '$state','csNotication',
     function ( userFactory, $scope, $modal, $state, csNotication ) {
 
     var init,
-        user,
         validate,
         userSaveError,
         userSaveSuccess;
@@ -48,8 +47,8 @@ angular.module('missileManApp')
         var config = {
           title: 'Terms & Conditions..!!',
           message: 'Please accept Terms and Conditions to registration',
-          okText: "OK",
-          cancelText: "Cancel",
+          okText: 'OK',
+          cancelText: 'Cancel',
           showOK: true,
           showCancel: false,
           successCallback: function() {
@@ -75,8 +74,8 @@ angular.module('missileManApp')
       var config = {
         title: 'Congratulations..!!',
         message: 'You have registered successfully. Please enter One Time Password and verify. You will get OTP sms shortly.',
-        okText: "Ok",
-        cancelText: "Cancel",
+        okText: 'Ok',
+        cancelText: 'Cancel',
         showOK: true,
         showCancel: true,
         successCallback: function() {
@@ -96,8 +95,8 @@ angular.module('missileManApp')
       var config = {
         title: 'Error..!!',
         message: data.data.message,
-        okText: "Contact Us",
-        cancelText: "Cancel",
+        okText: 'Contact Us',
+        cancelText: 'Cancel',
         showOK: true,
         showCancel: true,
         successCallback: function() {

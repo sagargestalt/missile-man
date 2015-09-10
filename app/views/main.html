@@ -8,30 +8,40 @@
           <div class="row search-row animated fadeInUp">
             <div class="col-lg-3 col-sm-3 search-col relative locationicon">
               <i class="icon-location-2 icon-append"></i>
-              <input type="text" name="country" id="autocomplete-ajax" class="form-control locinput input-rel searchtag-input has-icon" placeholder="City..." value="">
+              <ui-select ng-model="search.district" theme="selectize" ng-disabled="disabled">
+                <ui-select-match placeholder="District...">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="d in districts | filter: $select.search">
+                  <span ng-bind-html="d.name | highlight: $select.search"></span>
+                </ui-select-choices>
+              </ui-select>
             </div>
+
             <div class="col-lg-3 col-sm-3 search-col relative">
               <i class="icon-docs icon-append"></i>
-              <input type="text" name="ads" id="autocomplete-ajax1" class="form-control locinput input-rel searchtag-input has-icon" placeholder="I'm looking Branches..." value="">
+              <!-- <input type="text" name="ads" id="autocomplete-ajax1" class="form-control locinput input-rel searchtag-input has-icon" placeholder="I'm looking Branches..." value=""> -->
+              <ui-select ng-model="search.stream" theme="selectize" ng-disabled="disabled">
+                <ui-select-match placeholder="Stream...">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="stream in streams | filter: $select.search">
+                  <span ng-bind-html="stream.name | highlight: $select.search"></span>
+                </ui-select-choices>
+              </ui-select>
             </div>
             <div class="col-lg-3 col-sm-3 search-col relative">
               <i class="icon-docs icon-append"></i>
 
-              <select class="form-control selecter  has-icon">
-
-                <option>Poly</option>
-                <option>BE-BTech</option>
-                <option>ME-MTech</option>
-                <option>MBA</option>
-                <option>MCA</option>
-                <option>B.Pharmsy</option>
-              </select>
+              <ui-select ng-model="search.course" theme="selectize" ng-disabled="disabled">
+                <ui-select-match placeholder="Course...">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="course in courses | filter: $select.search">
+                  <span ng-bind-html="course.name | highlight: $select.search"></span>
+                </ui-select-choices>
+              </ui-select>
             </div>
             <div class="col-lg-3 col-sm-3 search-col">
               <button class="btn btn-primary btn-search btn-block" ng-click="find()">
                 <i class="fa fa-search"></i>
                 <strong>Find</strong>
               </button>
+
             </div>
           </div>
         </div>
@@ -48,6 +58,7 @@
             <div class="color-border"></div>
             <div class="row">
               <div class="col-md-12 ">
+                {{search.district}}
                 <p>Gestalt IT Consultancy Pvt. Ltd. is working with public and private clients to transform the quality of global education, good governance and skills development. Everything we do is focused on making a tangible difference in the lives of
                   learners, communities and nations, enabling students of all ages to be prepared to succeed in an increasingly competitive world.</p>
 

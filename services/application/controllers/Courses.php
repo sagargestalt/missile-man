@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . '/controllers/CosRestController.php';
 
-class Districts extends CosRestController
+class Courses extends CosRestController
 {
   public function index_get()
   {
@@ -17,10 +17,12 @@ class Districts extends CosRestController
     // $sql = $this->db->get_compiled_select( 'districts' );
     // $this->response( $sql );
 
-    $this->db->select('district AS name, district AS value');
+    $this->db->select('branch AS name, branch AS value');
+    $this->db->select('stream');
     $this->db->distinct();
-    $this->db->order_by("district", "asc");
-    $this->response(array("data" => $this->db->get('cosColleges')->result()));
+    $this->db->order_by("branch", "asc");
+    $this->db->where_not_in('branch', 'N/A');
+    $this->response(array("data" => $this->db->get('cosCourses')->result()));
   }
 }
 ?>
