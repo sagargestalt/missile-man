@@ -96,12 +96,12 @@
         </div>
         <div class="col-sm-9 page-content">
           <h2>
-            <i class="fa fa-search fa-1x"></i> Search results
+            <i class="fa fa-search fa-1x"></i> Search results {{collegeList.length}}
         </h2>
 
           <div class="color-border"></div>
 
-          <div class="inner-box">
+          <div class="inner-box" ng-repeat="college in collegeList">
             <div class="row">
 
               <div class="col-sm-12">
@@ -109,9 +109,9 @@
                   <div class="item-list">
                     <div class="col-sm-3 no-padding photobox">
                       <div class="add-image">
-                        <span class="photo-count">
-                        <i class="fa fa-camera"></i> 2
-                      </span>
+                        <!-- <span class="photo-count">
+                          <i class="fa fa-camera"></i> 2
+                        </span> -->
                         <a ui-sref="college-detail">
                           <img class="thumbnail no-margin" src="images/college/tp/jspm.jpg" alt="img">
                         </a>
@@ -122,13 +122,21 @@
 
                       <div class="ads-details">
                         <h5 class="add-title">
-                        <a ui-sref="college-detail"> Jayawant Shikshan Prasarak Mandal </a>
+                        <a ui-sref="college-detail({collegeId: college.collegeId})">
+                          {{college.collegeName}}
+                        </a>
                       </h5>
 
                         <span class="info-row">
-                        <p><i class="fa fa-commenting"></i> info@jspm.com</p>
-                        <p><i class="fa fa-map-marker"></i> S No 720/1 &2, Pune Nagar Road, Mahara, Wagholi Samrat Ashok Road, Wagholi, Pune, Maharashtra 411007</p>
-                        <p><i class="fa fa-university"></i> Pune, Maharashtra </p>
+                        <p>
+                          <i class="fa fa-commenting"></i> {{college.email}}
+                        </p>
+                        <p>
+                          <i class="fa fa-map-marker"></i> {{college.address}}
+                        </p>
+                        <p>
+                          <i class="fa fa-university"></i> {{college.website}}
+                        </p>
 
 
                       </span>
@@ -185,176 +193,8 @@
                 </div>
               </div>
             </div>
-
           </div>
-
-          <div class="inner-box">
-
-
-            <div class="row">
-
-              <div class="col-sm-12">
-                <div class="adds-wrapper">
-                  <div class="item-list">
-                    <div class="col-sm-3 no-padding photobox">
-                      <div class="add-image">
-                        <span class="photo-count">
-                        <i class="fa fa-camera"></i> 2
-                      </span>
-                        <a ui-sref="college-detail">
-                          <img class="thumbnail no-margin" src="images/college/tp/coep.jpg" alt="img">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-sm-9 add-desc-box">
-                      <div class="ads-details">
-                        <h5 class="add-title">
-                        <a ui-sref="college-detail"> College of Engineering, Pune </a>
-                      </h5>
-
-                        <span class="info-row">
-                        <p><i class="icon-mail"></i> info@coep.com</p>
-                        <p><i class="fa fa-map-marker"></i>Wellesely Road, Shivaji Nagar, Pune, Maharashtra 411005</p>
-                        <p><i class="fa fa-university"></i> Pune, Maharashtra </p>
-
-                      </span>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row coverfooter">
-              <div class="color-border"></div>
-              <div class="col-sm-4 no-padding">
-                <div class="iconbox-wrap">
-                  <div class="iconbox">
-                    <div class="iconbox-wrap-icon">
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <div class="iconbox-wrap-content">
-                      <h5><span>3</span> </h5>
-                      <div class="iconbox-wrap-text">Total Stars</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-4 no-padding">
-                <div class="iconbox-wrap">
-                  <div class="iconbox">
-                    <div class="iconbox-wrap-icon">
-                      <i class="fa fa-globe"></i>
-                    </div>
-                    <div class="iconbox-wrap-content">
-                      <h5><span>1854</span> </h5>
-                      <div class="iconbox-wrap-text">Establishment</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-4 no-padding">
-                <div class="iconbox-wrap">
-                  <div class="iconbox">
-                    <div class="iconbox-wrap-icon">
-                      <i class="fa fa-eye"></i>
-                    </div>
-                    <div class="iconbox-wrap-content">
-                      <h5><span>2000+</span> </h5>
-                      <div class="iconbox-wrap-text">Total Views</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="inner-box">
-            <div class="row">
-
-              <div class="col-sm-12">
-                <div class="adds-wrapper">
-                  <div class="item-list">
-                    <div class="col-sm-3 no-padding photobox">
-                      <div class="add-image">
-                        <span class="photo-count">
-                        <i class="fa fa-camera"></i> 2
-                      </span>
-                        <a ui-sref="college-detail">
-                          <img class="thumbnail no-margin" src="images/college/tp/jspm.jpg" alt="img">
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-sm-9 add-desc-box">
-
-
-                      <div class="ads-details">
-                        <h5 class="add-title">
-                        <a ui-sref="college-detail"> Jayawant Shikshan Prasarak Mandal </a>
-                      </h5>
-
-                        <span class="info-row">
-                        <p><i class="icon-mail"></i> info@jspm.com</p>
-                        <p><i class="fa fa-map-marker"></i> S No 720/1 &2, Pune Nagar Road, Mahara, Wagholi Samrat Ashok Road, Wagholi, Pune, Maharashtra 411007</p>
-                        <p><i class="fa fa-university"></i> Pune, Maharashtra </p>
-
-
-                      </span>
-
-
-                      </div>
-
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-            <div class="row coverfooter">
-              <div class="color-border"></div>
-              <div class="col-sm-4 no-padding">
-                <div class="iconbox-wrap">
-                  <div class="iconbox">
-                    <div class="iconbox-wrap-icon">
-                      <i class="fa fa-star"></i>
-                    </div>
-                    <div class="iconbox-wrap-content">
-                      <h5><span>3</span> </h5>
-                      <div class="iconbox-wrap-text">Total Stars</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-4 no-padding">
-                <div class="iconbox-wrap">
-                  <div class="iconbox">
-                    <div class="iconbox-wrap-icon">
-                      <i class="fa fa-globe"></i>
-                    </div>
-                    <div class="iconbox-wrap-content">
-                      <h5><span>1987</span> </h5>
-                      <div class="iconbox-wrap-text">Establishment</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-4 no-padding">
-                <div class="iconbox-wrap">
-                  <div class="iconbox">
-                    <div class="iconbox-wrap-icon">
-                      <i class="fa fa-eye"></i>
-                    </div>
-                    <div class="iconbox-wrap-content">
-                      <h5><span>2000+</span> </h5>
-                      <div class="iconbox-wrap-text">Total Views</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <div class="pagination-bar text-right">
+          <!-- <div class="pagination-bar text-right">
             <ul class="pagination">
               <li class="active"><a href="#">1</a>
               </li>
@@ -371,7 +211,7 @@
               <li><a href="#" class="pagination-btn">Next »</a>
               </li>
             </ul>
-          </div>
+          </div> -->
 
         </div>
       </div>

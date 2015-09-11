@@ -4,7 +4,7 @@
       <div class="dtable-cell hw100">
         <div class="container text-center" style="background-color: rgba(255, 255, 255, 0.4); padding:10px">
           <img src="images/jspm_logo.jpg" style="border-radius:50%">
-          <h2> JSPM's Bivrabai Sawant Polytechnic, Wagholi </h2>
+          <h2> {{collegeDetail.collegeName}} </h2>
 
         </div>
       </div>
@@ -17,7 +17,7 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="col-sm-2 text-center color_g">
-            <h1>1994</h1>
+            <h1>{{collegeDetail.esta_year}}</h1>
             <p>Established Year</p>
           </div>
           <div class="col-sm-2 text-center color_y">
@@ -37,7 +37,7 @@
             <p>Staff</p>
           </div>
           <div class="col-sm-2 text-center color_l">
-            <h1>1002</h1>
+            <h1>{{collegeDetail.collegeId}}</h1>
             <p>Institute Code</p>
           </div>
         </div>
@@ -48,12 +48,21 @@
 
         <div class="col-sm-9 page-content col-thin-right">
           <div class="inner inner-box ads-details-wrapper">
-            <h2> JSPM's Bivrabai Sawant Polytechnic, Wagholi</h2>
+            <h2> {{collegeDetail.collegeName}}</h2>
             <div class="color-border"></div>
 
             <div class="ads-image">
-              <h1 class="pricetag">Established 1998</h1>
-              <ul class="bxslider">
+              <h1 class="pricetag">Established {{collegeDetail.esta_year}}</h1>
+            <carousel interval="3000">
+              <slide ng-repeat="slide in slides" active="slide.active">
+                <img ng-src="{{slide.image}}" style="margin:auto;">
+                <div class="carousel-caption">
+                  <h4>Slide {{$index}}</h4>
+                  <p>{{slide.text}}</p>
+                </div>
+              </slide>
+            </carousel>
+              <!-- <ul class="bxslider">
                 <li>
                   <img src="images/college/tp-big/img1.jpg" alt="img" />
                 </li>
@@ -63,8 +72,8 @@
                 <li>
                   <img src="images/college/tp-big/img3.jpg" alt="img" />
                 </li>
-              </ul>
-              <div id="bx-pager">
+              </ul> -->
+              <!-- <div id="bx-pager">
                 <a class="thumb-item-link" data-slide-index="0" href="#">
                   <img src="images/college/tp-big/img1.jpg" alt="img" />
                 </a>
@@ -74,7 +83,7 @@
                 <a class="thumb-item-link" data-slide-index="2" href="#">
                   <img src="images/college/tp-big/img3.jpg" alt="img" />
                 </a>
-              </div>
+              </div> -->
             </div>
 
           </div>
@@ -249,7 +258,7 @@
       </div>
 
 
-      <div class="inner-box relative">
+      <!-- <div class="inner-box relative">
         <h2>Featured Listings
           <a id="nextItem" class="link  pull-right carousel-nav">
             <i class="icon-right-open-big"></i>
@@ -310,7 +319,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

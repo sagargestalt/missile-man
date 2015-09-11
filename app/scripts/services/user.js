@@ -10,7 +10,8 @@
 angular.module('missileManApp')
   .factory('userFactory', ['$resource', function ( $resource ) {
 
-    var url = 'http://localhost/missile-man/services/index.php/users/:action';
+    // var url = 'http://localhost/missile-man/services/index.php/users/:action';
+    var url = 'http://digitalapproach.in/services/index.php/users/:action';
     return $resource( url, {
       action: '@action'
     }, {

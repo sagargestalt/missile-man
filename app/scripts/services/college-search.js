@@ -8,16 +8,11 @@
  * Factory in the missileManApp.
  */
 angular.module('missileManApp')
-  .factory('collegeSearch', function () {
-    // Service logic
-    // ...
+  .factory('collegeSearch',['$resource', function ( $resource ) {
+    // var url = 'http://localhost/missile-man/services/index.php/colleges/search/:id';
+    var url = 'http://digitalapproach.in/services/index.php/colleges/search/:id';
 
-    var meaningOfLife = 42;
-
-    // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
-    };
-  });
+    return $resource(url, {
+      id: '@collegeId'
+    });
+  }]);

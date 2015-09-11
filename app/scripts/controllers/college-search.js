@@ -8,10 +8,14 @@
  * Controller of the missileManApp
  */
 angular.module('missileManApp')
-  .controller('CollegeSearchCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('CollegeSearchCtrl',['collegeResult','$scope', function (collegeResult, $scope) {
+    var init;
+
+    init = function() {
+      collegeResult.$promise.then( function() {
+        $scope.collegeList = collegeResult.data;
+      } );
+    };
+
+    init();
+  }]);

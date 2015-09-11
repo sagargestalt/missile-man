@@ -27,7 +27,14 @@ angular
       .state('main', {
         url: '/home',
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        resolve: {
+          districts: function(csDistrict) {
+            console.log( 'districts' );
+            console.log( '*************' );
+            return csDistrict.get();
+          }
+        }
       })
       .state('about-us', {
         url: '/about-us',
@@ -58,14 +65,30 @@ angular
         url: '/college-search',
         templateUrl: 'views/college-search.html',
         controller: 'CollegeSearchCtrl',
-        resolve: function() {
+        resolve: {
+          collegeResult: function(collegeSearch, dataContainer) {
+            var searchParams = dataContainer.homeSearch;
 
+            return collegeSearch.get( {
+              course: searchParams.course.name,
+              district: searchParams.district.name,
+              stream: searchParams.stream.name
+            } );
+          }
         }
       })
       .state('college-detail', {
-        url: '/college-detail',
+        url: '/college-detail/:collegeId',
         templateUrl: 'views/college-detail.html',
-        controller: 'CollegeDetailCtrl'
+        controller: 'CollegeDetailCtrl',
+        resolve: {
+          collegeDetails: function(collegeSearch, $stateParams) {
+            return collegeSearch.get( {
+              id: $stateParams.collegeId
+            } );
+          }
+
+        }
       });
   })
   .config(['$resourceProvider', function($resourceProvider) {
@@ -74,7 +97,7 @@ angular
     $resourceProvider.defaults.useXDomain = true;
     $resourceProvider.defaults.withCredentials = true;
     // console.log($resourceProvider);
-    console.log( 'This is sample test' );
+    // console.log( 'This is sample test' );
   }])
   .config(function(uiSelectConfig) {
     uiSelectConfig.theme = 'bootstrap';
