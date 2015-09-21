@@ -111,6 +111,48 @@ class Users extends CosRestController
     }
   }
 
+
+  public function login_post()
+  {
+    $phone = $this->post('phone');
+    $password = $this->post('password');
+
+    $this->load->database();
+    $this->load->helper('array');
+
+    $this->db->where('csPhone',$phone );
+    $this->db->where('csOtp', $otp );
+    $this->db->where('isBlock', 1 );
+
+    $query = $this->db->get('cosUsers');
+
+    $count = $query->num_rows();
+
+    if($count === 1 ) {
+      $data = array(
+        'isBlock' => 0
+      );
+
+      $this->db->where('csPhone',$phone );
+      $this->db->where('csOtp', $otp );
+      $this->db->update('cosUsers', $data);
+
+      $this->response(array("data" => array(
+        "status" => 201,
+        "message" => "User is authorised.",
+        "otp" => $otp,
+        "query" => $this->db->last_query()
+      )));
+    } else {
+      $this->response(array("data" => array(
+        "status" => 301,
+        "message" => "You entered incorrect OTP. Please try agin.",
+        "otp" => $otp,
+        "query" => $this->db->last_query()
+      )));
+    }
+  }
+
   public function demo_post() {
     if( count($this->input->post()) > 0 )
     {

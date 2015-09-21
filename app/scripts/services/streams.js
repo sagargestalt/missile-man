@@ -8,10 +8,8 @@
 * Factory in the missileManApp.
 */
 angular.module('missileManApp')
-.factory('csStreams',['$resource', function ($resource) {
-  // var url = 'http://localhost/missile-man/services/index.php/streams/:action/:district';
-  var url = 'http://digitalapproach.in/services/index.php/streams/:action/:district';
-  return $resource( url, {
+.factory('csStreams',['$resource', 'apiUrl', function ($resource, apiUrl) {
+  return $resource( apiUrl.STREAMS, {
     action: '@action',
     district: '@district'
   } );

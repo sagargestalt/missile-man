@@ -8,8 +8,7 @@
  * Factory in the missileManApp.
  */
 angular.module('missileManApp')
-  .factory('csDistrict',['$resource', function ($resource) {
-    // var url = 'http://localhost/missile-man/services/index.php/districts';
-    var url = 'http://digitalapproach.in/services/index.php/districts';
-    return $resource( url, {} );
+  .factory('csDistrict',['$resource', 'apiUrl', function ($resource,apiUrl) {
+    alert(apiUrl.DISTRICT);
+    return $resource( apiUrl.DISTRICT, {} );
   }]);

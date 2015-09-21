@@ -9,7 +9,6 @@
  */
 angular.module('missileManApp')
   .service('csNotication', ['$modal', function ($modal) {
-    // AngularJS will instantiate a singleton by calling 'new' on this function
     var handleAction;
 
     handleAction = function( config ) {

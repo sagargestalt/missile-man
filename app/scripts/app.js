@@ -20,7 +20,8 @@ angular
     'ui.bootstrap',
     'ui.select'
   ])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(['$stateProvider','$urlRouterProvider',
+   function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
 
     $stateProvider
@@ -90,7 +91,7 @@ angular
 
         }
       });
-  })
+  }])
   .config(['$resourceProvider', function($resourceProvider) {
     // Don't strip trailing slashes from calculated URLs
     // $resourceProvider.defaults.stripTrailingSlashes = false;

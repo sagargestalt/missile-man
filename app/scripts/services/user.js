@@ -8,11 +8,8 @@
  * Factory in the missileManApp.
  */
 angular.module('missileManApp')
-  .factory('userFactory', ['$resource', function ( $resource ) {
-
-    // var url = 'http://localhost/missile-man/services/index.php/users/:action';
-    var url = 'http://digitalapproach.in/services/index.php/users/:action';
-    return $resource( url, {
+  .factory('userFactory', ['$resource', 'apiUrl', function ( $resource, apiUrl ) {
+    return $resource( apiUrl.USERS, {
       action: '@action'
     }, {
       execute: {
