@@ -1,0 +1,51 @@
+<div class="main-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 page-content col-thin-right">
+        <div class="inner-box category-content">
+          <h2>Result {{resultList.length}} found</h2>
+          <div class="color-border"></div>
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Course Code</th>
+                    <th>Course Name</th>
+                    <th>Course Type</th>
+                    <th>Percentage</th>
+                    <th>Merit No</th>
+                    <th>CAP Round</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="r in resultList">
+                    <td>{{r.code}}</td>
+                    <td>{{r.courseName}}</td>
+                    <td>{{r.courseType}}</td>
+                    <td>{{r.percentage}}</td>
+                    <td>{{r.merit}}</td>
+                    <td>{{r.round}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <a href="#">
+          <img alt="" src="images/site/adbanner1.jpg" class="img-responsive">
+        </a>
+        <br>
+        <a href="#">
+          <img alt="" src="images/add2.jpg" class="img-responsive">
+        </a>
+        <br>
+        <a href="#">
+          <img alt="" src="images/site/add3.jpg" class="img-responsive">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

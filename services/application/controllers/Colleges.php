@@ -41,5 +41,33 @@ class Colleges extends CosRestController
 
     }
   }
+
+  public function cutoff_get($id=0)
+  {
+    $this->load->database();
+
+    $this->load->database();
+    // $this->db->select('*');
+    $this->db->select('cosCourses.name as courseName');
+    $this->db->select('cosCourses.type as courseType');
+    $this->db->select('percentage');
+    $this->db->select('meritNo as merit');
+    $this->db->select('courseId as code');
+    $this->db->select('round');
+    $this->db->from('cosColleges');
+    $this->db->join('cosCourses', 'cosCourses.collegeId = cosColleges.id', 'inner');
+    $this->db->join('cosCutoff_2015_poly', 'cosCourses.id = cosCutoff_2015_poly.courseId', 'inner');
+    // $this->db->where('cosColleges.district', 'Jalgaon');
+    // $this->db->where('cosColleges.id', 5008);
+    // $this->db->where('seatType', 'NLSCO');
+
+    $this->db->where('cosColleges.district', $this->get('district'));
+    $this->db->where('cosColleges.id', $this->get('collegeId'));
+    $this->db->where('seatType', $this->get('criteria'));
+    $query = $this->db->get();
+
+    $this->response(array("data" => $query->result(), 'query'=>$this->db->last_query()));
+
+  }
 }
 ?>

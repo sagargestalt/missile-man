@@ -31,8 +31,6 @@ angular
         controller: 'MainCtrl',
         resolve: {
           districts: function(csDistrict) {
-            console.log( 'districts' );
-            console.log( '*************' );
             return csDistrict.get();
           }
         }
@@ -62,6 +60,35 @@ angular
         templateUrl: 'views/authorise.html',
         controller: 'AuthoriseCtrl'
       })
+      .state('dashboard', {
+        url: '/dashboard',
+        templateUrl: 'views/dashboard.html',
+        controller: 'DashboardCtrl'
+      })
+      .state('cutoff-college-search', {
+        url: '/cutoff-college-search/:stream',
+        templateUrl: 'views/cutoff_college_search.html',
+        controller: 'CutoffCollegeSearchCtrl'
+      })
+      .state('cutoff-college-result', {
+        url: '/cutoff-college-result/:stream',
+        templateUrl: 'views/cutoff_college_result.html',
+        controller: 'CutoffCollegeResultCtrl',
+        resolve: {
+          collegeResult: function(collegeSearch, dataContainer) {
+            var searchParams = dataContainer.cutoffCollege;
+            // console.log( searchParams );
+            // return collegeSearch.cutoff().get();
+            return collegeSearch.cutoff().get( {
+              course: 'polytechic',
+              district: searchParams.collegeSearch.district,
+              collegeId: searchParams.collegeSearch.collegeId,
+              criteria: searchParams.criteria
+            } );
+          }
+        }
+
+      })
       .state('college-search', {
         url: '/college-search',
         templateUrl: 'views/college-search.html',
@@ -69,8 +96,7 @@ angular
         resolve: {
           collegeResult: function(collegeSearch, dataContainer) {
             var searchParams = dataContainer.homeSearch;
-
-            return collegeSearch.get( {
+            return collegeSearch.search().get( {
               course: searchParams.course.name,
               district: searchParams.district.name,
               stream: searchParams.stream.name

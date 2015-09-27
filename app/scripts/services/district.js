@@ -9,6 +9,5 @@
  */
 angular.module('missileManApp')
   .factory('csDistrict',['$resource', 'apiUrl', function ($resource,apiUrl) {
-    alert(apiUrl.DISTRICT);
     return $resource( apiUrl.DISTRICT, {} );
   }]);

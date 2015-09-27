@@ -17,6 +17,9 @@ angular.module('missileManApp')
       'DISTRICT': BASE_URL + 'districts',
       'STREAMS': BASE_URL + 'streams/:action/:district',
       'COURSES': BASE_URL + 'courses/streams/:stream/:district',
-      'USERS': BASE_URL + 'users/:action'
+      'USERS': BASE_URL + 'users/:action',
+      'COLLEGE_SEARCH': BASE_URL + 'colleges/search/:id',
+      'CUTOFF_DETAILS': BASE_URL + 'cutoff',
+      'COLLEGE_CUTOFF': BASE_URL + 'colleges/cutoff/:id',
     };
   }()));

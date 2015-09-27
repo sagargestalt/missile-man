@@ -22,6 +22,7 @@ class Users extends CosRestController
     try {
       // $fName = $this->input->post("firstName");
       // $fName = $_POST["firstName"];
+      // $this->load->library('encrypt');
 
       $user = array(
         'csFirstName' => $this->post('firstName'),
@@ -33,7 +34,7 @@ class Users extends CosRestController
         'csEmail' => $this->post('email'),
         'isBlock' => 1,
         'csOtp'=> rand(pow(10, 3), pow(10, 4)-1),
-        'csPassword' => md5($this->post('password')),
+        'csPassword' => MD5($this->post('password')),
         'ipAddress' => $this->input->ip_address(),
         'createdDateTime' => date("Y-m-d H:i:s")
       );
@@ -114,54 +115,53 @@ class Users extends CosRestController
 
   public function login_post()
   {
+    // $this->load->library('encrypt');
+
     $phone = $this->post('phone');
-    $password = $this->post('password');
+    $password = MD5($this->post('password'));
 
     $this->load->database();
     $this->load->helper('array');
 
     $this->db->where('csPhone',$phone );
-    $this->db->where('csOtp', $otp );
-    $this->db->where('isBlock', 1 );
+    $this->db->where('csPassword', $password );
+    $this->db->where('isBlock', 0 );
 
     $query = $this->db->get('cosUsers');
 
     $count = $query->num_rows();
 
     if($count === 1 ) {
-      $data = array(
-        'isBlock' => 0
-      );
-
-      $this->db->where('csPhone',$phone );
-      $this->db->where('csOtp', $otp );
-      $this->db->update('cosUsers', $data);
-
       $this->response(array("data" => array(
         "status" => 201,
-        "message" => "User is authorised.",
-        "otp" => $otp,
+        "message" => "Login successful.",
         "query" => $this->db->last_query()
       )));
     } else {
       $this->response(array("data" => array(
         "status" => 301,
-        "message" => "You entered incorrect OTP. Please try agin.",
-        "otp" => $otp,
+        "message" => "User not authorised. Please try agin.",
         "query" => $this->db->last_query()
       )));
     }
   }
 
   public function demo_post() {
-    if( count($this->input->post()) > 0 )
-    {
-        echo "Wroking";
-    }
-    else
-    {
-      echo $this->post('firstName');
-    }
+    $this->response(array("data" => array(
+      "status" => 301,
+      "message" => $this->post('firstName'),
+      "query" => md5('demo'),
+      "query1" => md5('demo'),
+      "query2" => md5('demo')
+    )));
+    // if( count($this->input->post()) > 0 )
+    // {
+    //     echo "Wroking";
+    // }
+    // else
+    // {
+    //   echo $this->post('firstName');
+    // }
   }
 }
 ?>
