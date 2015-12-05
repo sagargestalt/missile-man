@@ -79,8 +79,10 @@ angular
             var searchParams = dataContainer.cutoffCollege;
             // console.log( searchParams );
             // return collegeSearch.cutoff().get();
+            // alert(searchParams.collegeSearch.stream);
             return collegeSearch.cutoff().get( {
-              course: 'polytechic',
+              stream: searchParams.stream,
+              course: searchParams.course,
               district: searchParams.collegeSearch.district,
               collegeId: searchParams.collegeSearch.collegeId,
               criteria: searchParams.criteria

@@ -77,9 +77,9 @@
                     <div class="col-md-6">
                       <input name="phoneNumber" placeholder="Phone Number" class="form-control input-md" type="text" ng-model="user.phone" required>
                       <div class="checkbox">
-                        <label>
+                        <!-- <label>
                           <span class="help-block">OTP will be sent on this number.</span>
-                        </label>
+                        </label> -->
                       </div>
                     </div>
                   </div>
@@ -166,6 +166,11 @@
                     </label>
                     <div class="col-md-6">
                       <input type="email" class="form-control" name="email" placeholder="Email" ng-model="user.email" required>
+                      <div class="checkbox">
+                        <label>
+                        <span class="help-block">OTP will be sent on this  email.</span>
+                      </label>
+                    </div>
                     </div>
                   </div>
 
@@ -196,7 +201,6 @@
                       </div>
                       <div style="clear:both"></div>
                       <input type="submit" value="Register" class="btn btn-primary" href ng-disabled="registerForm.$invalid"/>
-                      {{registerForm.$valid}}
                     </div>
                   </div>
                 </fieldset>

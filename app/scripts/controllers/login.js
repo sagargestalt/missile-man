@@ -17,8 +17,10 @@ angular.module('missileManApp')
 
     init = function() {
       $scope.user = {};
-      $scope.user.phone = '9422987456';
-      $scope.user.password = 'demo';
+      // $scope.user.phone = '9422987456';
+      // $scope.user.password = 'demo';
+      $scope.user.phone = '';
+      $scope.user.password = '';
     };
 
     loginSuccess = function( resp ) {
@@ -26,8 +28,8 @@ angular.module('missileManApp')
         loginError( resp );
         return;
       }
-      console.log( 'success' );
-      console.log( resp );
+      // console.log( 'success' );
+      // console.log( resp );
       var config = {
         title: 'Login',
         message: 'You have successfully logged in.',

@@ -37,7 +37,8 @@ class Colleges extends CosRestController
 
       $query = $this->db->get();
 
-      $this->response(array("data" => $query->result(), 'query'=>$this->db->last_query()));
+      $this->response(array("data" => $query->result(),
+        "count" => 1000, 'query'=>$this->db->last_query()));
 
     }
   }
@@ -48,22 +49,59 @@ class Colleges extends CosRestController
 
     $this->load->database();
     // $this->db->select('*');
-    $this->db->select('cosCourses.name as courseName');
+
+    $tableName = "";
+
+    if($this->get('stream') === "MCA" ){
+      $tableName = "cosCutoff_2015_mca";
+    } else if($this->get('stream') === "Management" ){
+      $tableName = "cosCutoff_2015_mba";
+    } else if($this->get('stream') === "Hotel Management" ){
+      $tableName = "cosCutoff_2015_hotel_mgmt";
+    } else if($this->get('stream') === "Polytechnic" ){
+      $tableName = "cosCutoff_2015_poly";
+    } else if($this->get('stream') === "Engineering" ){
+      $tableName = "cosCutoff_2015_eng";
+    }
+
+    if($this->get('criteria') == 'PH' || $this->get('criteria') == 'PO'){
+      $this->db->select("CONCAT(cosCourses.name, ' - ', seatType)  as courseName");
+    } else {
+      $this->db->select('cosCourses.name as courseName');
+    }
     $this->db->select('cosCourses.type as courseType');
-    $this->db->select('percentage');
-    $this->db->select('meritNo as merit');
+
+
+
+    if( $this->get('criteria') === "AI" && $this->get('stream') === "Engineering") {
+      $this->db->select('"N/A" as percentage');
+      $this->db->select('CONCAT(meritNo, " (", indiaRank, ")") as merit');
+    } else {
+      $this->db->select('percentage');
+      $this->db->select('meritNo as merit');
+    }
+
     $this->db->select('courseId as code');
     $this->db->select('round');
     $this->db->from('cosColleges');
     $this->db->join('cosCourses', 'cosCourses.collegeId = cosColleges.id', 'inner');
-    $this->db->join('cosCutoff_2015_poly', 'cosCourses.id = cosCutoff_2015_poly.courseId', 'inner');
+    $this->db->join($tableName, 'cosCourses.id = courseId', 'inner');
     // $this->db->where('cosColleges.district', 'Jalgaon');
     // $this->db->where('cosColleges.id', 5008);
     // $this->db->where('seatType', 'NLSCO');
 
     $this->db->where('cosColleges.district', $this->get('district'));
     $this->db->where('cosColleges.id', $this->get('collegeId'));
-    $this->db->where('seatType', $this->get('criteria'));
+    if($this->get('criteria') == 'PH'){
+      $this->db->like('seatType', 'PH', 'after');
+      $this->db->like('seatType', 'H', 'before');
+    } else if($this->get('criteria') == 'PO'){
+      $this->db->like('seatType', 'PH', 'after');
+      $this->db->like('seatType', 'O', 'before');
+    } else {
+      $this->db->where('seatType', $this->get('criteria'));
+    }
+
     $query = $this->db->get();
 
     $this->response(array("data" => $query->result(), 'query'=>$this->db->last_query()));

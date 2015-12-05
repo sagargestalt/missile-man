@@ -22,24 +22,23 @@ angular.module('missileManApp')
       $scope.user.firstName = null;
       $scope.user.lastName = null;
       $scope.user.phone = null;
-      $scope.user.gender = 'M';
+      $scope.user.gender = '';
       $scope.user.district = null;
       $scope.user.aboutMe = null;
       $scope.user.email = null;
       $scope.user.password = null;
 
-      $scope.user.userType = 'S';
-      $scope.user.firstName = 'sampleFirstName';
-      $scope.user.lastName = 'sampleLastName';
-      $scope.user.phone = '9422987456';
-      $scope.user.gender = 'M';
-      $scope.user.district = 'Pune';
-      $scope.user.aboutMe = 'Demo Text';
-      $scope.user.email = 'pune@gmail.com';
-      $scope.user.password = 'demo';
+      // $scope.user.userType = 'S';
+      // $scope.user.firstName = 'sampleFirstName';
+      // $scope.user.lastName = 'sampleLastName';
+      // $scope.user.phone = '9422987456';
+      // $scope.user.gender = 'M';
+      // $scope.user.district = 'Pune';
+      // $scope.user.aboutMe = 'Demo Text';
+      // $scope.user.email = 'pune@gmail.com';
+      // $scope.user.password = 'demo';
 
-      $scope.acceptTerms = true;
-      $scope.formSubmitted = false;
+      // $scope.acceptTerms = true;
     };
 
     validate = function() {
@@ -65,7 +64,7 @@ angular.module('missileManApp')
     };
 
     userSaveSuccess = function( data ) {
-      console.log( 'in usersavesuccess' );
+
       if( data.data.status === 301 ) {
         userSaveError( data );
         return;
@@ -90,8 +89,8 @@ angular.module('missileManApp')
     };
 
     userSaveError = function( data ) {
-      console.log( data );
-      console.log('in user save error');
+      // console.log( data );
+      // console.log('in user save error');
       var config = {
         title: 'Error..!!',
         message: data.data.message,
@@ -110,10 +109,7 @@ angular.module('missileManApp')
     };
 
     $scope.submit = function () {
-      // return;
-      console.log('Submit button called');
       if(validate()) {
-        console.log('in validate if');
         userFactory.userData = $scope.user;
         userFactory.save( $scope.user ).$promise.then( userSaveSuccess, userSaveError );
       }

@@ -19,8 +19,8 @@ angular.module('missileManApp')
         $scope.user.firstName = userFactory.userData.firstName;
         $scope.user.phone = userFactory.userData.phone;
       }
-      $scope.user.phone = 9422987456;
-      $scope.user.otp = 1758;
+      // $scope.user.phone = 9422987456;
+      // $scope.user.otp = 1758;
     };
 
     verifySuccess = function( data ) {

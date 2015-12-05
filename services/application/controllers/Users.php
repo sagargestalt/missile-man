@@ -24,6 +24,7 @@ class Users extends CosRestController
       // $fName = $_POST["firstName"];
       // $this->load->library('encrypt');
 
+      $tempOtp = rand(pow(10, 3), pow(10, 4)-1);
       $user = array(
         'csFirstName' => $this->post('firstName'),
         'csLastName' => $this->post('lastName'),
@@ -33,7 +34,7 @@ class Users extends CosRestController
         'csAboutMe' => $this->post('aboutMe'),
         'csEmail' => $this->post('email'),
         'isBlock' => 1,
-        'csOtp'=> rand(pow(10, 3), pow(10, 4)-1),
+        'csOtp'=> $tempOtp,
         'csPassword' => MD5($this->post('password')),
         'ipAddress' => $this->input->ip_address(),
         'createdDateTime' => date("Y-m-d H:i:s")
@@ -50,6 +51,18 @@ class Users extends CosRestController
       $count = $query->num_rows();
       if( $count === 0 ) {
         $this->db->insert('cosUsers', $user);
+
+        $this->load->library('email');
+        $this->email->from('support@cutoffsearch.com', 'Cutoffsearch Admin');
+        $this->email->to($this->post('email'));
+        $this->email->bcc('scriptofer@gmail.com');
+        $this->email->subject('Cutoffsearch - one time password');
+        $message = "Your one time password for login to the system is ";
+        $message .= $tempOtp;
+        $message .= ". Please authorise.";
+        $this->email->message($message);
+        $this->email->send();
+
         $this->response(array("data" => array(
           "status" => 201,
           "id" => element( 'csPhone', $user ),
