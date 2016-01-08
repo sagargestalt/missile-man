@@ -112,9 +112,9 @@ angular
         controller: 'CollegeDetailCtrl',
         resolve: {
           collegeDetails: function(collegeSearch, $stateParams) {
-            return collegeSearch.get( {
+            return collegeSearch.search().get({
               id: $stateParams.collegeId
-            } );
+            });
           }
 
         }
