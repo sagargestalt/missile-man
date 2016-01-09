@@ -17,12 +17,12 @@ angular.module('missileManApp')
         setStreamDetails;
 
     resetAll = function ( flag ) {
-      $scope.collegeSearch.seatType = "";
-      $scope.collegeSearch.category = "";
-      $scope.collegeSearch.gender = "";
-      $scope.collegeSearch.distType = "";
+      $scope.collegeSearch.seatType = '';
+      $scope.collegeSearch.category = '';
+      $scope.collegeSearch.gender = '';
+      $scope.collegeSearch.distType = '';
       if(!flag) {
-        $scope.collegeSearch.collegeId = "";
+        $scope.collegeSearch.collegeId = '';
       }
       $scope.metadata.seatTypes = [];
       $scope.metadata.categories = [];
@@ -54,7 +54,7 @@ angular.module('missileManApp')
           $scope.course = 'Bachelor of Engineering (B. E.)';
           return;
         default:
-          alert('error');
+          console.log('error');
       }
 
     };
@@ -64,7 +64,7 @@ angular.module('missileManApp')
       setStreamDetails();
 
       $scope.collegeSearch = {};
-      $scope.collegeSearch.district = "";
+      $scope.collegeSearch.district = '';
 
       // polytechnic Metadata
 
@@ -101,15 +101,10 @@ angular.module('missileManApp')
         obj.value = st.substring(st.length - 1);
         obj.label = obj.value === 'H' ? 'Home District' : 'Other District';
 
-        if(tmpArr.indexOf(obj.value) === -1
-          && ( st[1] === $scope.collegeSearch.gender
-            || st[1] === '@')
-          && st[0] === $scope.collegeSearch.seatType
-          && st.substring( 2, st.length-1 ) === $scope.collegeSearch.category
-          && !isPH) {
+        if(tmpArr.indexOf(obj.value) === -1 && ( st[1] === $scope.collegeSearch.gender || st[1] === '@') && st[0] === $scope.collegeSearch.seatType && st.substring( 2, st.length-1 ) === $scope.collegeSearch.category && !isPH) {
             tmpArr.push(obj.value);
             distTypes.push(obj);
-          } else if( tmpArr.indexOf(obj.value) === -1 && isPH && st[0] == 'P') {
+          } else if( tmpArr.indexOf(obj.value) === -1 && isPH && st[0] === 'P') {
             tmpArr.push(obj.value);
             distTypes.push(obj);
           }
@@ -131,10 +126,7 @@ angular.module('missileManApp')
         obj.value = st.substring(2, st.length - 1);
         obj.label = st.substring(2, st.length - 1);
 
-        if(tmpArr.indexOf(obj.value) === -1
-          && ( st[1] === $scope.collegeSearch.gender
-            || st[1] === '@')
-          && st[0] === $scope.collegeSearch.seatType) {
+        if(tmpArr.indexOf(obj.value) === -1 && ( st[1] === $scope.collegeSearch.gender || st[1] === '@') && st[0] === $scope.collegeSearch.seatType) {
             tmpArr.push(obj.value);
             category.push(obj);
           }
@@ -164,8 +156,7 @@ angular.module('missileManApp')
          st = $scope.metadata.cutoffDetails[i].csSeatType;
          obj.value = st[1];
          obj.label = st[1] === 'G' ? 'Male': 'Female';
-         if(tmpArr.indexOf(obj.value) === -1
-           && st[0] === $scope.collegeSearch.seatType ) {
+         if(tmpArr.indexOf(obj.value) === -1 && st[0] === $scope.collegeSearch.seatType ) {
 
              tmpArr.push(obj.value);
              gender.push(obj);
@@ -207,13 +198,13 @@ angular.module('missileManApp')
     $scope.submit = function() {
       var criteria = $scope.collegeSearch.seatType;
 
-      if( $scope.collegeSearch.seatType === "D" ) {
+      if( $scope.collegeSearch.seatType === 'D' ) {
         $scope.collegeSearch.distType = 'EFO';
       }
-      if( $scope.collegeSearch.seatType === "O" ) {
+      if( $scope.collegeSearch.seatType === 'O' ) {
         $scope.collegeSearch.distType = 'MS';
       }
-      if( $scope.collegeSearch.seatType === "A" ) {
+      if( $scope.collegeSearch.seatType === 'A' ) {
         $scope.collegeSearch.distType = 'I';
       }
 
