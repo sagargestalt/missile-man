@@ -222,5 +222,16 @@ angular.module('missileManApp')
       $state.go('cutoff-college-result');
     };
     init();
+    
+    $scope.enableSubmit= function() {
+    if($scope.collegeSearch.district && $scope.collegeSearch.collegeId && $scope.collegeSearch.seatType)
+    {
+      return false;
+    } else
+    {
+      {return true}
+    };
+
+    }
 
   }]);
