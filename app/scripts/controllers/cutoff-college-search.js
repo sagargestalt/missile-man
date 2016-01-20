@@ -229,8 +229,8 @@ angular.module('missileManApp')
       return false;
     } else
     {
-      {return true}
-    };
+      return true;
+    }
 
     }
 

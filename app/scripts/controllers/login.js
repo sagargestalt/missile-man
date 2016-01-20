@@ -9,8 +9,8 @@
  */
 angular.module('missileManApp')
   .controller('LoginCtrl',
-  ['$scope','userFactory', 'csNotication','$state',
-  function ($scope, userFactory, csNotication, $state) {
+  ['$scope','userFactory', 'csNotication','$state','$rootScope',
+  function ($scope, userFactory, csNotication, $state, $rootScope) {
     var init,
         loginSuccess,
         loginError;
@@ -58,6 +58,7 @@ angular.module('missileManApp')
       var execute = userFactory
             .execute( { phone: $scope.user.phone,password: $scope.user.password, action: 'login' } );
       execute.$promise.then(loginSuccess, loginError);
+      $rootScope.unableLogin= true;
     };
 
     init();
