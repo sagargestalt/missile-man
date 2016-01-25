@@ -44,7 +44,8 @@
           <a href ui-sref="contact-us">Contact Us</a>
         </li>
         <li class="postadd">
-          <a class="btn btn-block btn-border btn-post btn-danger" href ui-sref="login">Sign In</a>
+          <a class="btn btn-block btn-border btn-post btn-danger" ng-hide="unableLogin" href ui-sref="login">Sign In</a>
+           <a class="btn btn-block btn-border btn-post btn-danger" ng-show="unableLogin" href ui-sref="dashboard">Dashboard</a>
         </li>
       </ul>
     </div>
