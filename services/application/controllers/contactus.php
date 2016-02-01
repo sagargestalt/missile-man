@@ -36,12 +36,13 @@ class contactus extends CosRestController
 	{
 		//Load the email library
 		$this->load->library('email');
-		$email_address = $this ->input->post('email_address');
-		$message = $this ->input->post('message');
+		//$email_address = $this ->input->post('email_address');
+		//$message = $this ->input->post('message');
 
                     
 		$this->email->initialize(array("mailtype" => "html"));
-		$this->email->from($email_address, "user");
+		$this->email->from($this->post('email'));
+		$message = ($this->post('msg'));
 
 		//email to admin
 		$this->email->to('ajitnetwork@gmail.com');
@@ -52,11 +53,12 @@ class contactus extends CosRestController
 
 		//email to user
 					
-		$email_address = $this ->input->post('email_address');
-		$this->email->to($email_address);
+		//$email_address = $this ->input->post('email_address');
+		$this->email->to($this->post('email'));
 		$this->email->from('info@gitcpl.com', "Admin Team");
 		$this->email->subject("Thank You");
-		$this->email->message("thank you for feedback we will get back to within 2 business days");
+		$message = "thank you for feedback we will get back to within 2 business days ";
+		$this->email->message($message);
 		$this->email->send();
 					 
 					
