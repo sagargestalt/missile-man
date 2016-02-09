@@ -57,6 +57,8 @@
     <div ui-view></div>
     <cs-footer-dir></cs-footer-dir>
   </div>
+  <div class="container" ng-class="{'modalOpen' : modalOpen}">
+  </div>
 
   <!-- build:js(.) scripts/vendor.js -->
   <!-- bower:js -->
@@ -107,6 +109,7 @@
   <script src="scripts/services/contact-us.js"></script>
   <script src="scripts/directives/common/print-div.js"></script>
   <script src="scripts/directives/common/redirecttoback.js"></script>
+  <script src="scripts/controllers/like-cutoff-ctrl.js"></script>
   <!-- endbuild -->
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->

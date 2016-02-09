@@ -8,8 +8,8 @@
  * Controller of the missileManApp
  */
 angular.module('missileManApp')
-  .controller('MainCtrl',['$scope', '$state', 'dataContainer', 'districts', 'csStreams', 'csCourses',
-  function ($scope, $state, dataContainer, districts, csStreams, csCourses ) {
+  .controller('MainCtrl',['$scope', '$state', 'dataContainer', 'districts', 'csStreams', 'csCourses', '$modal', '$timeout',
+  function ($scope, $state, dataContainer, districts, csStreams, csCourses, $modal, $timeout ) {
     var init;
 
     $scope.find = function () {
@@ -57,4 +57,25 @@ angular.module('missileManApp')
     };
 
     init();
+    $scope.modalOpen = false;
+
+    $scope.open = function (size) {
+    var modalInstance = $modal.open({
+      templateUrl: 'views/like-cutoff.html',
+      controller: 'LikeCutoffCtrl',
+      size: 'sm'
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+      console.log('**Modal dismissed at: ' + new Date());
+      $scope.modalOpen = false;
+    });
+    };
+
+    $timeout( function () {
+    $scope.open();
+    $scope.modalOpen = true;
+    }, 2000);
   }]);
