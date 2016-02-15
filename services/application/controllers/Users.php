@@ -53,10 +53,10 @@ class Users extends CosRestController
         $this->db->insert('cosUsers', $user);
 
         $this->load->library('email');
-        $this->email->from('support@cutoffsearch.com', 'Cutoffsearch Admin');
+        $this->email->from('Cutoffsearch Admin <support@cutoffsearch.com>');
         $this->email->to($this->post('email'));
         $this->email->bcc('scriptofer@gmail.com');
-        $this->email->subject('Cutoffsearch - one time password');
+        $this->email->subject('www.cutoffsearch.com - one time password');
         $message = "Your one time password for login to the system is ";
         $message .= $tempOtp;
         $message .= ". Please authorise.";
