@@ -118,7 +118,24 @@ angular
           }
 
         }
-      });
+      })
+    .state( 'googlemaps', {
+      url: '/maps',
+      templateUrl: "views/google-maps.html",
+      data: {}
+    })
+    .state( 'advertisewithus', {
+      url: '/advertise-with-us',
+      templateUrl: "views/advertise-with-us.html",
+      controller: "AboutUsCtrl",
+      data: {}
+    })
+     .state( 'download', {
+      url: '/download',
+      templateUrl: "views/download.html",
+      controller: "DownloadCtrl",
+      data: {}
+    });
   }])
   .config(['$resourceProvider', function($resourceProvider) {
     // Don't strip trailing slashes from calculated URLs
