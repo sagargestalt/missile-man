@@ -72,7 +72,7 @@ angular.module('missileManApp')
 
       var config = {
         title: 'Congratulations..!!',
-        message: 'You have registered successfully. Please enter One Time Password and verify. You will get OTP sms shortly.',
+        message: 'You have registered successfully. Please enter OTP or click on link in the email.',
         okText: 'Ok',
         cancelText: 'Cancel',
         showOK: true,

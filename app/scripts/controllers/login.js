@@ -9,8 +9,8 @@
  */
 angular.module('missileManApp')
   .controller('LoginCtrl',
-  ['$scope','userFactory', 'csNotication','$state','$rootScope',
-  function ($scope, userFactory, csNotication, $state, $rootScope) {
+  ['$scope','userFactory', 'csNotication','$state','$rootScope', '$stateParams',
+  function ($scope, userFactory, csNotication, $state, $rootScope, $stateParams) {
     var init,
         loginSuccess,
         loginError;
@@ -19,7 +19,7 @@ angular.module('missileManApp')
       $scope.user = {};
       // $scope.user.phone = '9422987456';
       // $scope.user.password = 'demo';
-      $scope.user.phone = '';
+      $scope.user.phone = $stateParams.phone ? $stateParams.phone : '';
       $scope.user.password = '';
     };
 
