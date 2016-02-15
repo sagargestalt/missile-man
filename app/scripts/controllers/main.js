@@ -59,7 +59,7 @@ angular.module('missileManApp')
     init();
     $scope.modalOpen = false;
 
-    $scope.open = function (size) {
+    $scope.open = function () {
     var modalInstance = $modal.open({
       templateUrl: 'views/like-cutoff.html',
       controller: 'LikeCutoffCtrl',

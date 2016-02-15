@@ -24,9 +24,8 @@ angular.module('missileManApp').controller('ContactUsCtrl',['$scope','contactUs'
         emailaddress: $scope.email,
         msg: $scope.message
       };
-      contactUs.save(angular.toJson(data), function(response) {
+      contactUs.save(angular.toJson(data), function() {
 				$scope.isSubmitted = true;
-        alert(response.message);
       });
     };
   }]);

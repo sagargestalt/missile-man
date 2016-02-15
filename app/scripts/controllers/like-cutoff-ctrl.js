@@ -8,9 +8,8 @@
  * Controller of the missileManApp
  */
 angular.module('missileManApp')
-  .controller('LikeCutoffCtrl',["$scope", "$timeout", "$modal", 
-  	function( $scope, $timeout, $modal ) {
-  		$scope.close = function() {
-    	this.$dismiss();
+.controller('LikeCutoffCtrl',['$scope', function($scope) {
+  $scope.close = function() {
+    this.$dismiss();
   };
 }]);

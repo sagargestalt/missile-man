@@ -221,17 +221,14 @@ angular.module('missileManApp')
       console.log( dataContainer.cutoffCollege );
       $state.go('cutoff-college-result');
     };
-    init();
-    
+
     $scope.enableSubmit= function() {
-    if($scope.collegeSearch.district && $scope.collegeSearch.collegeId && $scope.collegeSearch.seatType)
-    {
-      return false;
-    } else
-    {
-      return true;
-    }
+      if($scope.collegeSearch.district && $scope.collegeSearch.collegeId && $scope.collegeSearch.seatType) {
+        return false;
+      } else {
+        return true;
+      }
+    };
 
-    }
-
+    init();
   }]);
