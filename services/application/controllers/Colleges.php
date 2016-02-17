@@ -15,6 +15,9 @@ class Colleges extends CosRestController
       $this->db->select('cosColleges.website as website');
       $this->db->select('cosColleges.email as email');
       $this->db->select('cosColleges.establish_year as esta_year');
+      // $this->db->select('CONCAT(cosColleges.taluka, '-', cosColleges.principalOfficePhone) as officePhone', false);
+      $this->db->select('concat("0",cosColleges.std_code, "-", cosColleges.principalOfficePhone) as officePhone', false);
+
       $this->db->from('cosColleges');
       $this->db->where('id', $id);
 
