@@ -46,7 +46,7 @@ angular
         controller: 'ContactUsCtrl'
       })
       .state('login', {
-        url: '/login',
+        url: '/login/:phone',
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })

@@ -53,13 +53,25 @@ class Users extends CosRestController
         $this->db->insert('cosUsers', $user);
 
         $this->load->library('email');
-        $this->email->from('Cutoffsearch Admin <support@cutoffsearch.com>');
+        $this->email->from('support@cutoffsearch.com');
         $this->email->to($this->post('email'));
-        $this->email->bcc('scriptofer@gmail.com');
-        $this->email->subject('www.cutoffsearch.com - one time password');
-        $message = "Your one time password for login to the system is ";
-        $message .= $tempOtp;
-        $message .= ". Please authorise.";
+        $this->email->bcc('vishnutekale13@gmail.com');
+        $this->email->subject('Cutoffsearch Signup | Verification');
+
+        $message = '
+
+Thanks for signing up!
+
+Your account has been created, you can login with your mobile number after you activate your account.
+
+----------------------------
+Mobile: '. element( 'csPhone', $user ) .'
+OTP: '. $tempOtp .'
+----------------------------
+
+Please click below link to activate your account:
+http://www.cutoffsearch.com/services/index.php/users/verify?mobile='.element( 'csPhone', $user ).'&otp='.$tempOtp.'&hash='.md5( rand(100, 500) );
+
         $this->email->message($message);
         $this->email->send();
 
@@ -84,13 +96,11 @@ class Users extends CosRestController
     }
   }
 
-  public function authorise_post()
+  public function authorise($phone, $otp, $isByLink)
   {
-    $phone = $this->post('phone');
-    $otp = $this->post('otp');
-
     $this->load->database();
     $this->load->helper('array');
+    $this->load->helper('url');
 
     $this->db->where('csPhone',$phone );
     $this->db->where('csOtp', $otp );
@@ -109,12 +119,17 @@ class Users extends CosRestController
       $this->db->where('csOtp', $otp );
       $this->db->update('cosUsers', $data);
 
-      $this->response(array("data" => array(
-        "status" => 201,
-        "message" => "User is authorised.",
-        "otp" => $otp,
-        "query" => $this->db->last_query()
-      )));
+      if($isByLink) {
+        redirect('http://www.cutoffsearch.com/#/login/'.$phone, 'refresh');
+      } else {
+        $this->response(array("data" => array(
+          "status" => 201,
+          "message" => "Congratulations. You are verified. Please login and start searching.",
+          "otp" => $otp,
+          "query" => $this->db->last_query()
+        )));
+
+      }
     } else {
       $this->response(array("data" => array(
         "status" => 301,
@@ -125,11 +140,23 @@ class Users extends CosRestController
     }
   }
 
+  public function verify_get() {
+    $mobile = $this->get('mobile');
+    $otp = $this->get('otp');
+    $this->authorise($mobile, $otp, true);
+  }
+
+  public function authorise_post() {
+    $phone = $this->post('phone');
+    $otp = $this->post('otp');
+
+    $this->authorise($phone, $otp, false);
+  }
+
+
 
   public function login_post()
   {
-    // $this->load->library('encrypt');
-
     $phone = $this->post('phone');
     $password = MD5($this->post('password'));
 
@@ -167,14 +194,6 @@ class Users extends CosRestController
       "query1" => md5('demo'),
       "query2" => md5('demo')
     )));
-    // if( count($this->input->post()) > 0 )
-    // {
-    //     echo "Wroking";
-    // }
-    // else
-    // {
-    //   echo $this->post('firstName');
-    // }
   }
 }
 ?>

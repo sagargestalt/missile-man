@@ -31,9 +31,9 @@ angular.module('missileManApp')
         });
       };
       paths = [
-        'images/college/tp-big/img1.jpg',
-        'images/college/tp-big/img2.jpg',
-        'images/college/tp-big/img3.jpg'
+        '/images/college/img1.jpg',
+        '/images/college/img2.jpg',
+        '/images/college/img3.jpg'
       ];
 
       for (var i=0; i<3; i++) {
