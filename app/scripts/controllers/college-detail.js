@@ -27,7 +27,7 @@ angular.module('missileManApp')
       addSlide = function(path) {
         $scope.slides.push({
           image: path,
-          text: 'Sample Text'
+          text: 'College Picture'
         });
       };
       paths = [

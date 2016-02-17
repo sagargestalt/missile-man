@@ -3,7 +3,7 @@
     <div class="dtable hw100">
       <div class="dtable-cell hw100">
         <div class="container text-center" style="background-color: rgba(255, 255, 255, 0.4); padding:10px">
-          <img src="/images/logo.png" style="border-radius:50%">
+          <img src="/images/logo.png" style="border-radius:50%" ng-if="!isMobileDevice">
           <h2> {{collegeDetail.collegeName}} </h2>
 
         </div>
@@ -21,7 +21,7 @@
             <p>Established Year</p>
           </div>
           <div class="col-sm-2 text-center color_y">
-            <h1>10</h1>
+            <h1>10+</h1>
             <p>Departments</p>
           </div>
           <div class="col-sm-2 text-center color_b">
@@ -48,7 +48,7 @@
 
         <div class="col-sm-9 page-content col-thin-right">
           <div class="inner inner-box ads-details-wrapper">
-            <h2> {{collegeDetail.collegeName}}</h2>
+            <h2 ng-if="!isMobileDevice"> {{collegeDetail.collegeName}}</h2>
             <div class="color-border"></div>
 
             <div class="ads-image">
@@ -94,7 +94,7 @@
               <div class="color-border"></div>
               <div class="row">
                 <div class="ads-details-info col-md-12">
-                  <p>JSPM colleges are committed to provide value based quality education, maintaining pace with changing technology to produce competent and skilled professionals ready to accept global challenges. All the JSPM colleges have well equipped
+                  <p>colleges are committed to provide value based quality education, maintaining pace with changing technology to produce competent and skilled professionals ready to accept global challenges. All the colleges have well equipped
                     infrastructure with full facilities to support students in their studies and give access to a wealth of materials, equipments and information.
                   </p>
 
@@ -196,7 +196,33 @@
         </div>
         <div class="col-sm-3  page-sidebar-right">
           <aside>
-
+            <div class="panel sidebar-panel panel-contact-seller">
+              <div class="panel-heading">Contact Details</div>
+              <div class="panel-content user-info">
+                <div class="panel-body text-center">
+                  <div class="seller-info">
+                    <h3 class="no-margin">&lt;Contact Person&gt;</h3>
+                    <p>Website:
+                      <strong><a ng-href="http://{{collegeDetail.website}}" target="_blank">{{collegeDetail.website}}</a></strong>
+                    </p>
+                    <p>Email:
+                      <strong><a ng-href="mailto:{{collegeDetail.email}}">{{collegeDetail.email}}</a></strong>
+                    </p>
+                  </div>
+                  <div class="user-ads-action">
+                    <a href="#contactAdvertiser" data-toggle="modal" class="btn   btn-default btn-block">
+                      <i class=" icon-mail-2"></i> Send a message
+                    </a>
+                    <a class="btn  btn-info btn-block">
+                      <i class=" icon-phone-1"></i> +91 932-614-6833
+                    </a>
+                    <a  data-toggle="modal"  data-target="#contactrequest" class="btn   btn-warning btn-block">
+                      <i class=" icon-mail-2"></i> Request for Contact
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="inner-box no-padding">
               <div class="inner-box-content">
                 <a href="#">
@@ -218,43 +244,14 @@
                 </a>
               </div>
             </div>
-
-            <div class="panel sidebar-panel panel-contact-seller">
-              <div class="panel-heading">Contact Details</div>
-              <div class="panel-content user-info">
-                <div class="panel-body text-center">
-                  <div class="seller-info">
-                    <h3 class="no-margin">Richard Aki</h3>
-                    <p>Location:
-                      <strong>Pune</strong>
-                    </p>
-                    <p>Email:
-                      <strong>bsp@jspmengg.com</strong>
-                    </p>
-                  </div>
-                  <div class="user-ads-action">
-                    <a href="#contactAdvertiser" data-toggle="modal" class="btn   btn-default btn-block">
-                      <i class=" icon-mail-2"></i> Send a message
-                    </a>
-                    <a class="btn  btn-info btn-block">
-                      <i class=" icon-phone-1"></i> +91 932-614-6833
-                    </a>
-                     <a  data-toggle="modal"  data-target="#contactrequest" class="btn   btn-warning btn-block">
-                      <i class=" icon-mail-2"></i> Request for Contact
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </aside>
         </div>
       </div>
 
       <div class="inner-box relative">
-        <a class="facebook" href="http://facebook.com"><i class="fa fa-facebook fa-3x"></i>Like us on Facbook</a>
-        <a class="twitter" href="http://twitter.com"><i class="fa fa-twitter fa-3x"></i>Follow us on Twitter</a>
-        <a class="youtube" href="http://youtube.com"><i class="fa fa-youtube fa-3x"></i>Follow us on Youtube</a>
+        <a class="facebook" ng-href="http://facebook.com"><i class="fa fa-facebook fa-3x"></i></a>
+        <a class="twitter" ng-href="http://twitter.com"><i class="fa fa-twitter fa-3x"></i></a>
+        <a class="youtube" ng-href="http://youtube.com"><i class="fa fa-youtube fa-3x"></i></a>
 
       </div>
 

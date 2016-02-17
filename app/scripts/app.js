@@ -77,9 +77,6 @@ angular
         resolve: {
           collegeResult: function(collegeSearch, dataContainer) {
             var searchParams = dataContainer.cutoffCollege;
-            // console.log( searchParams );
-            // return collegeSearch.cutoff().get();
-            // alert(searchParams.collegeSearch.stream);
             return collegeSearch.cutoff().get( {
               stream: searchParams.stream,
               course: searchParams.course,
@@ -89,7 +86,6 @@ angular
             } );
           }
         }
-
       })
       .state('college-search', {
         url: '/college-search',
@@ -103,6 +99,9 @@ angular
               district: searchParams.district.name,
               stream: searchParams.stream.name
             } );
+          },
+          searchParams: function(dataContainer) {
+            return dataContainer.homeSearch;
           }
         }
       })
@@ -121,19 +120,19 @@ angular
       })
     .state( 'googlemaps', {
       url: '/maps',
-      templateUrl: "views/google-maps.html",
+      templateUrl: 'views/google-maps.html',
       data: {}
     })
     .state( 'advertisewithus', {
       url: '/advertise-with-us',
-      templateUrl: "views/advertise-with-us.html",
-      controller: "AboutUsCtrl",
+      templateUrl: 'views/advertise-with-us.html',
+      controller: 'AboutUsCtrl',
       data: {}
     })
      .state( 'download', {
       url: '/download',
-      templateUrl: "views/download.html",
-      controller: "DownloadCtrl",
+      templateUrl: 'views/download.html',
+      controller: 'DownloadCtrl',
       data: {}
     });
   }])
@@ -147,4 +146,8 @@ angular
   }])
   .config(function(uiSelectConfig) {
     uiSelectConfig.theme = 'bootstrap';
+  })
+  .run(function($rootScope) {
+    var mobileRegex = /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/;
+    $rootScope.isMobileDevice = mobileRegex.test(navigator.userAgent);
   });
