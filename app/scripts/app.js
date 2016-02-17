@@ -121,19 +121,19 @@ angular
       })
     .state( 'googlemaps', {
       url: '/maps',
-      templateUrl: "views/google-maps.html",
+      templateUrl: 'views/google-maps.html',
       data: {}
     })
     .state( 'advertisewithus', {
       url: '/advertise-with-us',
-      templateUrl: "views/advertise-with-us.html",
-      controller: "AboutUsCtrl",
+      templateUrl: 'views/advertise-with-us.html',
+      controller: 'AboutUsCtrl',
       data: {}
     })
      .state( 'download', {
       url: '/download',
-      templateUrl: "views/download.html",
-      controller: "DownloadCtrl",
+      templateUrl: 'views/download.html',
+      controller: 'DownloadCtrl',
       data: {}
     });
   }])
