@@ -53,26 +53,23 @@ class Users extends CosRestController
         $this->db->insert('cosUsers', $user);
 
         $this->load->library('email');
-        $this->email->from('support@cutoffsearch.com');
+        $config = array(
+          'charset' => 'utf-8',
+          'wordwrap' => TRUE,
+        );
+
+        $mailData = array(
+          'phone' => element( 'csPhone', $user ),
+          'otp' => $tempOtp,
+        );
+        $this->email->initialize($config);
+        $this->email->from('support@cutoffsearch.com', 'Cutoff Support');
+        $this->email->set_mailtype('html');
         $this->email->to($this->post('email'));
         $this->email->bcc('vishnutekale13@gmail.com');
         $this->email->subject('Cutoffsearch Signup | Verification');
-
-        $message = '
-
-Thanks for signing up!
-
-Your account has been created, you can login with your mobile number after you activate your account.
-
-----------------------------
-Mobile: '. element( 'csPhone', $user ) .'
-OTP: '. $tempOtp .'
-----------------------------
-
-Please click below link to activate your account:
-http://www.cutoffsearch.com/services/index.php/users/verify?mobile='.element( 'csPhone', $user ).'&otp='.$tempOtp.'&hash='.md5( rand(100, 500) );
-
-        $this->email->message($message);
+        $html_email = $this->load->view('mail/template', $mailData, true);
+        $this->email->message($html_email);
         $this->email->send();
 
         $this->response(array("data" => array(

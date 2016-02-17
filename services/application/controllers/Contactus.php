@@ -14,7 +14,7 @@ class Contactus extends CosRestController
       'email_address' => $this->post('emailaddress'),
       'message' => $this->post('msg')
     );
-    $this->sendemail();
+    $this->sendemail($data);
 
     $this->load->database();
     $this->load->helper('array');
@@ -26,32 +26,66 @@ class Contactus extends CosRestController
       "message" => "Your feedback sent succefully. Thanks."
     )));
   }
-	public function sendemail()
+	public function sendemail($data)
 	{
-		//Load the email library
 		$this->load->library('email');
-		$email_address = $this->input->post('email_address');
-		$message = $this->input->post('message');
+		$config = array(
+			'charset' => 'utf-8',
+			'wordwrap' => TRUE,
+		);
 
+		$mailData = "Thank you for your feedback. We will get back to you soon.";
+		$this->email->initialize($config);
+		$this->email->from('support@cutoffsearch.com', 'Cutoff Support');
+		$this->email->set_mailtype('html');
+		$this->email->to($data['email_address']);
+		$this->email->bcc('vishnutekale13@gmail.com');
+		$this->email->subject('Thank You...!!!');
+		$this->email->message($mailData);
+		$this->email->send();
 
-		$this->email->initialize(array("mailtype" => "html"));
-		$this->email->from($email_address, "user");
-
-		//email to admin
+		$mailData = "User registered : " . $data['email_address'];
+		$mailData .= "\nFeedback : " . $data['message'];
+		$this->email->initialize($config);
+		$this->email->from('support@cutoffsearch.com', 'Cutoff Support');
+		$this->email->set_mailtype('html');
 		$this->email->to('ajitnetwork@gmail.com');
 		$this->email->cc('vishnutekale13@gmail.com');
-		$this->email->subject('userfeedback');
-		$this->email->message($message);
+		$this->email->subject('Cutoff - Contact us');
+		$this->email->message($mailData);
+		$this->email->send();
+  }
+
+	public function emailtest_get()
+	{
+		$this->load->library('email');
+		$config = array(
+			'wordwrap' => TRUE,
+			'protocol' => 'smtp',
+			'smtp_host' => 'mail.cutoffsearch.com',
+			'smtp_port' => 25,
+			'smtp_user' => 'support@cutoffsearch.com',
+			'smtp_pass' => 'support@cos',
+			'mailtype' => 'html',
+			'charset' => 'utf-8'
+		);
+
+		$mailData = "Hello User,<br>User registered : abc@gmail.com";
+		$mailData .= "<br>Feedback : This is a sample reply";
+		$this->email->initialize($config);
+		$this->email->from('support@cutoffsearch.com');
+		$this->email->reply_to('support@cutoffsearch.com');
+		$this->email->to('ajitnetwork@gmail.com');
+		$this->email->cc('vishnutekale13@gmail.com');
+		$this->email->subject('Cutoff - Contact us');
+		$this->email->message($mailData);
 		$this->email->send();
 
-		//email to user
+		$this->response(array("data" => array(
+			"message" => $this->email->print_debugger()
+		)));
+		// $this->email->send();
+	}
 
-		$email_address = $this ->input->post('email_address');
-		$this->email->to($email_address);
-		$this->email->from('info@gitcpl.com', "Admin Team");
-		$this->email->subject("Thank You");
-		$this->email->message("Thank you for feedback. We will get back to you soon...!!!");
-		$this->email->send();
-    }
 }
 ?>
