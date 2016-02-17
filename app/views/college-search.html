@@ -46,7 +46,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-sm-3 page-sidebar">
+        <div class="col-sm-3 page-sidebar" ng-if="!isMobileDevice">
           <aside>
 
             <div class="inner-box no-padding">
@@ -94,7 +94,7 @@
             </div>
           </aside>
         </div>
-        <div class="col-sm-9 page-content">
+        <div class="page-content"  ng-class="{'col-sm-9': !isMobileDevice, 'col-sm-12': isMobileDevice}">
           <h2>
             <i class="fa fa-search fa-1x"></i> Search results {{collegeList.length}}
         </h2>

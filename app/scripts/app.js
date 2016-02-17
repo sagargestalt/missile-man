@@ -147,4 +147,8 @@ angular
   }])
   .config(function(uiSelectConfig) {
     uiSelectConfig.theme = 'bootstrap';
+  })
+  .run(function($rootScope) {
+    var mobileRegex = /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/;
+    $rootScope.isMobileDevice = mobileRegex.test(navigator.userAgent);
   });
