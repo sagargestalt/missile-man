@@ -621,7 +621,11 @@ body {
 
 
 .logo, .logo-title{
-	width:290px;
+	width:260px;
+
+  img {
+    width: 100%;
+  }
 }
 
 .item-list.make-grid .photobox, .item-list.make-grid .add-desc-box, .item-list.make-grid .price-box {
@@ -972,7 +976,7 @@ background: #EDEDED;
 /* =============================================================== */
 
 .sidebar-panel .panel-heading {
-  background: #f8f8f8;
+  background: #5BC0DE;
   position: relative;
   border-bottom: 1px solid #ddd;
   font-size: 16px;

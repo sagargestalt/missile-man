@@ -18,6 +18,6 @@ angular.module('missileManApp').controller('DownloadCtrl',['$scope','$window',
   $scope.downloads = downloads;
  // $scope.isMobileDevice = deviceDetector.isMobile();
   $scope.downloadContent = function( path ) {
-    $window.open(path, "_blank")
+    $window.open(path, '_blank');
   };
   }]);

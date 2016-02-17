@@ -77,9 +77,6 @@ angular
         resolve: {
           collegeResult: function(collegeSearch, dataContainer) {
             var searchParams = dataContainer.cutoffCollege;
-            // console.log( searchParams );
-            // return collegeSearch.cutoff().get();
-            // alert(searchParams.collegeSearch.stream);
             return collegeSearch.cutoff().get( {
               stream: searchParams.stream,
               course: searchParams.course,
@@ -89,7 +86,6 @@ angular
             } );
           }
         }
-
       })
       .state('college-search', {
         url: '/college-search',
@@ -103,6 +99,9 @@ angular
               district: searchParams.district.name,
               stream: searchParams.stream.name
             } );
+          },
+          searchParams: function(dataContainer) {
+            return dataContainer.homeSearch;
           }
         }
       })
