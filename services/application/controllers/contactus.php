@@ -14,15 +14,28 @@ class Contactus extends CosRestController
       'email_address' => $this->post('emailaddress'),
       'message' => $this->post('msg')
     );
-    //$this->sendemail();
+    $this->sendemail();
 
     $this->load->database();
     $this->load->helper('array');
-     $this->load->library('email');
-   // $this->email->initialize(array("mailtype" => "html"));
-		//$this->email->from($email_address, "user");
-		$this->email->from($this->post('emailaddress'));
-		$message = ($this->post('msg'));
+
+    //TODO : Add the contact_us table then enable this line
+    //$this->db->insert('contact_us', $data);
+
+    $this->response(array("data" => array(
+      "message" => "Your feedback sent succefully. Thanks."
+    )));
+  }
+	public function sendemail()
+	{
+		//Load the email library
+		$this->load->library('email');
+		$email_address = $this->input->post('email_address');
+		$message = $this->input->post('message');
+
+
+		$this->email->initialize(array("mailtype" => "html"));
+		$this->email->from($email_address, "user");
 
 		//email to admin
 		$this->email->to('ajitnetwork@gmail.com');
@@ -33,21 +46,12 @@ class Contactus extends CosRestController
 
 		//email to user
 
-		//$email_address = $this ->input->post('email_address');
-		//$this->email->to($email_address);
-		$this->email->to($this->post('emailaddress'));
+		$email_address = $this ->input->post('email_address');
+		$this->email->to($email_address);
 		$this->email->from('info@gitcpl.com', "Admin Team");
 		$this->email->subject("Thank You");
 		$this->email->message("Thank you for feedback. We will get back to you soon...!!!");
 		$this->email->send();
-
-    //TODO : Add the contact_us table then enable this line
-    //$this->db->insert('contact_us', $data);
-
-    $this->response(array("data" => array(
-      "message" => "Your feedback sent succefully. Thanks. email sent"
-    )));
-  }
-
+    }
 }
 ?>
