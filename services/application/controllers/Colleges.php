@@ -23,6 +23,9 @@ class Colleges extends CosRestController
 
       $query = $this->db->get();
 
+      $message = 'COS2016|College Detail Page|';
+      $message += 'id:' + $id;
+      log_message('error', $message);
       $this->response(array("data" => $query->result(), 'query'=>$this->db->last_query(), "id"=> $id));
 
     } else {
@@ -40,6 +43,12 @@ class Colleges extends CosRestController
 
       $query = $this->db->get();
 
+      $message = 'COS2016|College Search List Page|';
+      $message .= 'stream:' . $this->get('stream');
+      $message .= '|district:' . $this->get('district');
+      $message .= '|course:' . $this->get('course');
+
+      log_message('error', $message);
       $this->response(array("data" => $query->result(),
         "count" => 1000, 'query'=>$this->db->last_query()));
 

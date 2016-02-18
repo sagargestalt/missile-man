@@ -1801,3 +1801,10 @@ td.ads-details-td {
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
+
+.whatsAppContainer {
+  background-color: red;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+}
