@@ -32,14 +32,17 @@
               </td>
           <td>{{ d.name }}
           </td>
-          <td bo-if="d.type==='image'">
+          <td ng-if="d.type==='image'">
             <img ng-src="{{ d.path }}" style="width: 100px; height: 100px;"/>
           </td>
-          <td bo-if="d.type!=='image'">
-            <a ng-href="{{ d.path }}" target="_blank">Cutoff Search Brochure</a>
+          <td ng-if="d.type!=='image'">
+            <a ng-href="{{ d.path }}" target="_blank" download>Cutoff Search Brochure</a>
           </td>
 
-          <td style="cursor: pointer;"><span class="glyphicon glyphicon-download" aria-hidden="true" ng-click="downloadContent( d.path )"></span>
+          <td style="cursor: pointer;">
+            <a ng-href="{{ d.path }}" download>
+              <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
+            </a>
           </td>
         </tr>
         </tbody>
@@ -49,5 +52,4 @@
       </div>
     </div>
   </div>
-</div>
 </div>
