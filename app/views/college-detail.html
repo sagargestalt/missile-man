@@ -16,30 +16,34 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
+          <div class="col-sm-2">
+          </div>
           <div class="col-sm-2 text-center color_g">
-            <h1>{{collegeDetail.esta_year}}</h1>
-            <p>Established Year</p>
-          </div>
-          <div class="col-sm-2 text-center color_y">
-            <h1>10+</h1>
-            <p>Departments</p>
-          </div>
-          <div class="col-sm-2 text-center color_b">
-            <h1>880</h1>
-            <p>Students</p>
-          </div>
-          <div class="col-sm-2 text-center color_p">
-            <h1>20</h1>
-            <p>Courses</p>
-          </div>
-          <div class="col-sm-2 text-center color_r">
-            <h1>100+</h1>
-            <p>Staff</p>
-          </div>
-          <div class="col-sm-2 text-center color_l">
             <h1>{{collegeDetail.collegeId}}</h1>
             <p>Institute Code</p>
           </div>
+          <div class="col-sm-2 text-center color_p">
+            <h1>{{collegeDetail.boysHostel}}</h1>
+            <p>Boys Hostel Intake</p>
+          </div>
+          <div class="col-sm-2 text-center color_b">
+            <h1>{{collegeDetail.girlsHostel}}</h1>
+            <p>Girls Hostel Intake</p>
+          </div>
+          <div class="col-sm-2 text-center color_l">
+            <h1>{{courseDetails.length}}+</h1>
+            <p>Courses</p>
+          </div>
+          <div class="col-sm-2">
+          </div>
+          <!-- <div class="col-sm-2 text-center color_r">
+            <h1>100+</h1>
+            <p>Staff</p>
+          </div>
+          <div class="col-sm-2 text-center color_y">
+            <h1>{{collegeDetail.collegeId}}</h1>
+            <p>Institute Code</p>
+          </div> -->
         </div>
       </div>
       <br>
@@ -94,9 +98,7 @@
               <div class="color-border"></div>
               <div class="row">
                 <div class="ads-details-info col-md-12">
-                  <p>colleges are committed to provide value based quality education, maintaining pace with changing technology to produce competent and skilled professionals ready to accept global challenges. All the colleges have well equipped
-                    infrastructure with full facilities to support students in their studies and give access to a wealth of materials, equipments and information.
-                  </p>
+                  <p>{{collegeDetail.collegeInfo}}</p>
 
                   <div class="col-md-12">
                     <aside class="panel panel-body panel-details col-md-8">
@@ -104,15 +106,31 @@
                       <ul>
                         <li>
                           <p class=" no-margin ">
-                            <strong>University:</strong>
-                            Maharashtra State Board of Technical Education (MSBTE)
+                            <strong>Address:</strong>
+                            {{collegeDetail.address}}
                           </p>
                         </li>
                         <li>
                           <p class="no-margin">
-                            <strong>College type:</strong> Private/Self Financing
+                            <strong>District:</strong>{{collegeDetail.district}}
                           </p>
                         </li>
+                        <li>
+                          <p class="no-margin">
+                            <strong>Status 1: </strong>{{collegeDetail.status1}}
+                          </p>
+                        </li>
+                        <li>
+                          <p class="no-margin">
+                            <strong>Status 2: </strong>{{collegeDetail.status2}}
+                          </p>
+                        </li>
+                        <li>
+                          <p class="no-margin">
+                            <strong>Status 3: </strong>{{collegeDetail.status3}}
+                          </p>
+                        </li>
+                        <!--
                         <li>
                           <p class="no-margin">
                             <strong>Management:</strong> Jayawant Shikshan Prasarak Mandal's Education Society
@@ -122,7 +140,7 @@
                           <p class=" no-margin ">
                             <strong>Accreditation:</strong> AICTE
                           </p>
-                        </li>
+                        </li> -->
 
                       </ul>
                     </aside>
@@ -130,56 +148,45 @@
                       <ul class="list-border">
                         <li>
                           <a href="#">
-                            <i class=" fa fa-user"></i> More ads by User
+                            <i class=" fa fa-user"></i> More colleges
                           </a>
                         </li>
                         <li>
                           <a href="#">
-                            <i class=" fa fa-heart"></i> Save ad
+                            <i class=" fa fa-heart"></i> Save college
                           </a>
                         </li>
                         <li>
                           <a href="#">
-                            <i class="fa fa-share-alt"></i> Share ad
+                            <i class="fa fa-share-alt"></i> Share college
                           </a>
                         </li>
                         <li>
                           <a href="#">
-                            <i class="fa icon-info-circled-alt"></i> Report abuse
+                            <i class="fa icon-info-circled-alt"></i> Report
                           </a>
                         </li>
                       </ul>
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <h4>Departments and Courses</h4>
+                    <h4>Courses and choice code</h4>
 
                     <ul class="list-circle">
-                      <li>Diploma in Computer Engineering</li>
-                      <li>Diploma in Electronics & Telecommunication Engineering</li>
-                      <li>Diploma in Information Technology</li>
-                      <li>Diploma in Mechanical Engineering</li>
-                      <li>Diploma in Civil Engineering</li>
-                      <li>Diploma in Electrical Engineering</li>
-                      <li>Diploma in Electronics & Telecommunication Engineering</li>
-                      <li>Diploma in Information Technology</li>
+                      <li ng-repeat="c in courseDetails" ng-if="c.courseName">
+                          {{c.courseName}} - ({{c.choiceCode}})
+                          <div>Start Year - {{c.startyear}}</div>
+                          <div>Intake - {{c.courseIntek}}</div>
+                      </li>
                     </ul>
                   </div>
                   <div class="col-md-6">
                     <h4>Facilities & Amenities</h4>
 
                     <ul class="list-circle">
-                      <li>Audio Visual Aids Room</li>
-                      <li>Canteen</li>
-                      <li>Computer Lab</li>
-                      <li>Internet</li>
-                      <li>Laboratory</li>
-                      <li>Language Lab</li>
-                      <li>Library</li>
-                      <li>Multimedia Lab</li>
-                      <li>Reading Rooms</li>
-                      <li>Transportation Facility</li>
-                      <li>Workshop</li>
+                      <li ng-repeat="f in collegeFacilities">
+                        {{f}}
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -216,7 +223,7 @@
                     <a class="btn  btn-info btn-block">
                       <i class=" icon-phone-1"></i> {{collegeDetail.officePhone}}
                     </a>
-                    <a  data-toggle="modal"  data-target="#contactrequest" class="btn   btn-warning btn-block">
+                    <a class="btn btn-warning btn-block" ng-click="openContactPopup()">
                       <i class=" icon-mail-2"></i> Request for Contact
                     </a>
                   </div>
@@ -263,8 +270,17 @@
         <div class="color-border"></div>
         <div class="row">
           <div class="col-lg-12">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d26081603.294420466!2d-95.677068!3d37.06250000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1423809000824" width="100%" height="350" frameborder="0" style="border:0"></iframe>
-          </div>
+            <!-- <iframe src="https://www.google.com/maps/embed?q=fergusancollege" width="100%" height="350" frameborder="0" style="border:0"></iframe> -->
+
+
+          <!-- <iframe
+          width="100%"
+          height="350"
+          frameborder="0" style="border:0"
+          ng-src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAE4Eu2lyRw9bKuF7DIBGPjQNlTDS0MK2o&q=fergusan+college+pune" allowfullscreen>
+        </iframe> -->
+        <college-location college-name="{{collegeDetail.collegeName}}"></college-location>
+      </div>
         </div>
       </div>
 
@@ -332,36 +348,7 @@
         </div>
       </div> -->
        <!-- Modal -->
-  <div class="modal fade" id="contactrequest" role="dialog">
-    <div class="modal-dialog">
 
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Contact Information</h4>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <input id="fullname" name="name" type="text" placeholder="Full Name" class="form-control" ng-model="name">
-          </div>
-          <div class="form-group">
-            <input id="email" name="email" type="text" placeholder="Email Address" class="form-control" ng-model="email">
-          </div>
-          <div class="form-group">
-            <input id="mobile no" name="mobile" type="text" placeholder="Mobile Number" class="form-control" ng-model="mobile">
-          </div>
-
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success">submit</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
 
     </div>
   </div>

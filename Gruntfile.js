@@ -468,9 +468,10 @@ module.exports = function (grunt) {
     'clean:server',
     'wiredep',
     'concurrent:test',
-    'autoprefixer',
-    'connect:test',
-    'karma'
+    'autoprefixer'
+    // ,
+    // 'connect:test',
+    // 'karma'
   ]);
 
   grunt.registerTask('build', [

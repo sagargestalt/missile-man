@@ -21,6 +21,7 @@ angular.module('missileManApp')
       'COLLEGE_SEARCH': BASE_URL + 'colleges/search/:id',
       'CUTOFF_DETAILS': BASE_URL + 'cutoff',
       'COLLEGE_CUTOFF': BASE_URL + 'colleges/cutoff/:id',
-       'CONTACTUS': BASE_URL + 'contactus',
+      'CONTACTUS': BASE_URL + 'contactus',
+      'REQUEST': BASE_URL + 'contactus/request',
     };
   }()));

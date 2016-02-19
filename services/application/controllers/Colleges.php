@@ -15,18 +15,38 @@ class Colleges extends CosRestController
       $this->db->select('cosColleges.website as website');
       $this->db->select('cosColleges.email as email');
       $this->db->select('cosColleges.establish_year as esta_year');
+      $this->db->select('cosColleges.facilities as facilities');
+      $this->db->select('cosColleges.hostelBoysTotal as boysHostel');
+      $this->db->select('cosColleges.hostelGirlsTotal as girlsHostel');
+      $this->db->select('cosColleges.status1 as status1');
+      $this->db->select('cosColleges.status2 as status2');
+      $this->db->select('cosColleges.status3 as status3');
+      $this->db->select('cosColleges.collegeinfo as collegeInfo');
+      $this->db->select('cosColleges.district as district');
+
+
       // $this->db->select('CONCAT(cosColleges.taluka, '-', cosColleges.principalOfficePhone) as officePhone', false);
       $this->db->select('concat("0",cosColleges.std_code, "-", cosColleges.principalOfficePhone) as officePhone', false);
 
       $this->db->from('cosColleges');
       $this->db->where('id', $id);
 
-      $query = $this->db->get();
+      $collegequery = $this->db->get();
+
+      $this->db->select('cosCourses.name as courseName');
+      $this->db->select('cosCourses.id as choiceCode');
+      $this->db->select('cosCourses.startYear as startyear');
+      $this->db->select('cosCourses.intake as courseIntek');
+      $this->db->from('cosCourses');
+      $this->db->where('collegeId', $id);
+      $coursequery = $this->db->get();
+
+      $data = array("collegeResult"=> $collegequery->result(),"courseResult"=> $coursequery->result());
 
       $message = 'COS2016|College Detail Page|';
-      $message += 'id:' + $id;
+      $message .= 'id:' . $id;
       log_message('error', $message);
-      $this->response(array("data" => $query->result(), 'query'=>$this->db->last_query(), "id"=> $id));
+      $this->response(array("data" => $data, 'query'=>$this->db->last_query(), "id"=> $id));
 
     } else {
       $this->db->select('cosColleges.name as collegeName');
