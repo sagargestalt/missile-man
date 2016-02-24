@@ -3,19 +3,33 @@
     <h3 class="modal-title">Contact Information</h3>
   </div>
   <div class="modal-body">
+    <form name="contactrequest">
     <div class="form-group">
+      
       <input id="fullname" name="name" type="text" placeholder="Full Name" class="form-control" ng-model="contactInfo.name" required>
+        <div ng-messages="contactrequest.name.$error"  ng-if="contactrequest.name.$touched">
+          <p ng-message="required">Fullname is required.</p>
+        </div>
     </div>
     <div class="form-group">
       <input id="email" name="email" type="text" placeholder="Email Address" class="form-control" ng-model="contactInfo.email" required>
+        <div ng-messages="contactrequest.email.$error" ng-if="contactrequest.email.$touched">
+          <p ng-message="required">email is required.</p>
+        </div>
     </div>
     <div class="form-group">
-      <input id="mobile no" name="mobile" type="text" placeholder="Mobile Number" class="form-control" ng-model="contactInfo.mobile" required>
+      <input id="mobile no" name="mobile" type="text" placeholder="Mobile Number" class="form-control" ng-model="contactInfo.mobile" ng-minlength = "10" required>
+        <div ng-messages="contactrequest.mobile.$error" ng-if="contactrequest.mobile.$touched">
+          <p ng-message="required">mobile number is required.</p>
+          <p ng-message="minlength">number is too short.</p>
     </div>
+   
+    </form>
+  </div>
 
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-success" ng-click="submit()">submit</button>
+    <button type="button" class="btn btn-success" ng-click="submit()" ng-disabled="contactrequest.$invalid || contactrequest.$pending">submit</button>
     <button type="button" class="btn btn-default"  ng-click="close()">Close</button>
   </div>
 </div>
