@@ -71,7 +71,18 @@
                   Advertise With Us
                 </a>
               </li>
-      </ul>
+          </ul>
+           <li class="dropdown" ng-show="unableLogin">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              {{username[0].firstName + " " + username[0].lastName}}
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <a ng-click = "Logout()">
+                  Logout
+                </a>
+              </li>
+            </ul>
     </div>
   </div>
 </nav>

@@ -26,6 +26,7 @@ angular.module('missileManApp')
     loginSuccess = function( resp ) {
       if( resp.data.status === 301 ) {
         loginError( resp );
+        //$rootScope.resp;
         return;
       }
       // console.log( 'success' );
@@ -39,6 +40,7 @@ angular.module('missileManApp')
         showCancel: true,
         successCallback: function() {
           // $state.go( 'authorise' );
+
         },
         errorCallback: function() {
           // alert('error');
@@ -46,6 +48,9 @@ angular.module('missileManApp')
       };
       csNotication.handle( config );
       $state.go( 'dashboard' );
+      $rootScope.unableLogin= true;
+      $rootScope.username = {};
+      $rootScope.username = resp.data;
     };
 
     loginError = function( resp ) {
@@ -58,9 +63,14 @@ angular.module('missileManApp')
       var execute = userFactory
             .execute( { phone: $scope.user.phone,password: $scope.user.password, action: 'login' } );
       execute.$promise.then(loginSuccess, loginError);
-      $rootScope.unableLogin= true;
     };
 
     init();
+
+    $rootScope.Logout = function() {
+      $rootScope.unableLogin = false;
+      $rootScope.username = undefined;
+      $state.go( 'main' );
+    };
 
   }]);

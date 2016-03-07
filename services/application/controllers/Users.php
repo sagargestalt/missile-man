@@ -163,8 +163,8 @@ class Users extends CosRestController
     $this->db->where('csPhone',$phone );
     $this->db->where('csPassword', $password );
     $this->db->where('isBlock', 0 );
-
-    $query = $this->db->get('cosUsers');
+	
+    $query = $this->db->get('cosusers');
 
     $count = $query->num_rows();
 
@@ -172,7 +172,10 @@ class Users extends CosRestController
       $this->response(array("data" => array(
         "status" => 201,
         "message" => "Login successful.",
-        "query" => $this->db->last_query()
+		//"data" =>$this->db->get('cosusers')->result(),
+		//$this->login_get($phone,$password),
+        "query" => $this->db->last_query(),
+		$this->login_get($phone,$password)
       )));
     } else {
       $this->response(array("data" => array(
@@ -181,6 +184,43 @@ class Users extends CosRestController
         "query" => $this->db->last_query()
       )));
     }
+  }
+   public function login_get($phone,$password)
+  {
+   // $phone = $this->post('phone');
+   // $password = MD5($this->post('password'));
+
+    $this->load->database();
+    $this->load->helper('array');
+	
+	$this->db->select('csFirstName AS firstName');
+    $this->db->select('csLastName AS lastName');
+	$this->db->from('cosCourses');
+
+    $this->db->where('csPhone',$phone );
+	 $this->db->where('csPassword',$password );
+	 $this->db->distinct();
+    //$this->db->where('csPassword', $password );
+    //$this->db->where('isBlock', 0 );
+
+    //$query = $this->db->get('cosusers');
+	 $this->response(array("data" => $this->db->get('cosusers')->result()));
+
+    //$count = $query->num_rows();
+
+    //if($count === 1 ) {
+     // $this->response(array("data" => array(
+       // "status" => 201,
+       // "message" => "Login successful.",
+       // "query" => $this->db->last_query()
+     // )));
+    //} else {
+     // $this->response(array("data" => array(
+        //"status" => 301,
+        //"message" => "User not authorised. Please try agin.",
+        //"query" => $this->db->last_query()
+     // )));
+    
   }
 
   public function demo_post() {
